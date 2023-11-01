@@ -9,6 +9,8 @@ def fizzbuzz():
         elif i % 5 == 0:
             print("Buzz", end="")
         else:
-            print(i)
+            print(i, end="")
         if i < 101:
-            print(" ")
+            print(" ", end="")
+        else:
+            print()
