@@ -12,7 +12,7 @@
  */
 int is_palindrome(listint_t **head)
 {
-	int len = 0, ret = 1, a = 0, i, *number;
+	int len = 0, ret = 1, a = 0, i, number[10240];
 	listint_t *current = *head;
 
 	if (current == NULL)
@@ -23,7 +23,7 @@ int is_palindrome(listint_t **head)
 		len++;
 	}
 
-	number = malloc(sizeof(int) * len);
+	/*number = malloc(sizeof(int) * len);*/
 	current = *head;
 	while (current != NULL)
 	{
@@ -42,6 +42,6 @@ int is_palindrome(listint_t **head)
 		a--;
 	}
 
-	free(number);
+	/*free(number);*/
 	return (ret);
 }
