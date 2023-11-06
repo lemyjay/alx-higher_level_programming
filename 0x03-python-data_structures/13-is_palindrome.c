@@ -1,81 +1,47 @@
 #include "lists.h"
+#include <stdlib.h>
 
 
-listint_t *rev_list(listint_t **head);
 /**
- *  * is_palindrome - checks if a list is a palindrome
- *   * @head: pointer to a linked list
- *    * Return: Always 0 Success.
- *     */
+ * is_palindrome - A function that checks if a singly linked list is a
+ * palindrome. An empty list is considered a palindrome.
+ *
+ * @head: a pointer to the the head of the list.
+ *
+ * Return: 0 if not a palindrome, 1 if a palindrome.
+ */
 int is_palindrome(listint_t **head)
 {
-		listint_t *slow = *head, *fast = *head,*f_half, *sec_half;
-			listint_t *prev = NULL, *next = NULL;
-				listint_t *mid = NULL;
-					int flag = 1;
+	int len = 0, ret = 1, a = 0, i, /*number,*/number[10240];
+	listint_t *current = *head;
 
-						if (*head == NULL || (*head)->next == NULL)
-									return (1);
+	if (current == NULL)
+		return (1);
+	while (current != NULL)
+	{
+		current = current->next;
+		len++;
+	}
 
-							while (fast != NULL && fast->next != NULL)
-									{
-												fast = fast->next->next;
-														prev = slow;
-																slow = slow->next;
-																	}
+	/*number = malloc(sizeof(int) * len);*/
+	current = *head;
+	while (current != NULL)
+	{
+		number[a] = current->n;
+		current = current->next;
+		a++;
+	}
 
-								if (fast != NULL)
-										{
-													mid = slow;
-															slow = slow->next;
-																}
+	for (i = 0; i < (len / 2); i++)
+	{
+		if (number[i] != number[a - 1])
+		{
+			ret = 0;
+			break;
+		}
+		a--;
+	}
 
-									next = slow;
-										prev->next = NULL;
-
-											mid = (mid == NULL) ? rev_list(&next) : mid;
-
-												f_half = *head;
-													sec_half = mid;
-
-														while (f_half != NULL && sec_half != NULL)
-																{
-																			if (f_half->n != sec_half->n)
-																						{
-																										flag = 0;
-																													break;
-																															}
-																					f_half = f_half->next;
-																							sec_half = sec_half->next;
-																								}
-
-															/* restore the orig list */
-															rev_list(&mid);
-																rev_list(head);
-
-																	return (flag);
+	/*free(number);*/
+	return (ret);
 }
-/**
- *  * rev_list - reverses a linked list
- *   * @head: pointer to a node
- *    * Return: pointer to the head node
- *     */
-listint_t *rev_list(listint_t **head)
-{
-		listint_t *prev = NULL;
-			listint_t *current = *head;
-				listint_t *next = NULL;
-
-					while (current != NULL)
-							{
-										next = current->next;
-												current->next = prev;
-														prev = current;
-																current = next;
-																	}
-						*head = prev;
-
-							return (*head);
-}
-
-
