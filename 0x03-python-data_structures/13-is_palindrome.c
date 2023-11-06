@@ -12,7 +12,7 @@
  */
 int is_palindrome(listint_t **head)
 {
-	int len = 0, ret = 1, a = 0, i, number[10240];
+	int len = 0, ret = 1, a = 0, i, /*number,*/number[10240];
 	listint_t *current = *head;
 
 	if (current == NULL)
