@@ -9,7 +9,7 @@ listint_t *rev_list(listint_t **head);
  *     */
 int is_palindrome(listint_t **head)
 {
-		listint_t *slow = *head, *fast = *head;
+		listint_t *slow = *head, *fast = *head,*f_half, *sec_half;
 			listint_t *prev = NULL, *next = NULL;
 				listint_t *mid = NULL;
 					int flag = 1;
@@ -35,8 +35,8 @@ int is_palindrome(listint_t **head)
 
 											mid = (mid == NULL) ? rev_list(&next) : mid;
 
-												listint_t *f_half = *head;
-													listint_t *sec_half = mid;
+												f_half = *head;
+													sec_half = mid;
 
 														while (f_half != NULL && sec_half != NULL)
 																{
