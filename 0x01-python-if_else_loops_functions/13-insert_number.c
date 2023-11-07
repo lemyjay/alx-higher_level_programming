@@ -48,19 +48,18 @@ listint_t *insert_node(listint_t **head, int number)
 {
 	listint_t *current = *head, *temp, *new;
 
+	new = malloc(sizeof(listint_t));
+	if (new == NULL)
+		return (NULL);
+
 	if (current == NULL)
 	{
-		current = malloc(sizeof(listint_t));
-		if (current == NULL)
-			return (NULL);
-		current->n = number;
-		return (current);
+		new->n = number;
+		*head = new;
+		return (new);
 	}
 	else
 	{
-		new = malloc(sizeof(listint_t));
-		if (new == NULL)
-			return (NULL);
 		if (is_sorted(*head) == 0)
 		{
 			if (current->n >= number)
