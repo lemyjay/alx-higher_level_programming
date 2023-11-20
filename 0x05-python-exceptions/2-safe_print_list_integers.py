@@ -1,11 +1,5 @@
 #!/usr/bin/python3
 
-def _len(my_list=[]):
-    b = 0
-    for c in my_list:
-        b += 1
-    return b
-
 def safe_print_list_integers(my_list=[], x=0):
     try:
         k = 0
