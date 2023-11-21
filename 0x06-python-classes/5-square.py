@@ -18,7 +18,7 @@ class Square:
         return self.__size ** 2
 
     def my_print(self):
-        ''' 
+        '''
         Prints in stdout the square with the character #. If the size
         equals 0, an empty line is printed.
         '''
