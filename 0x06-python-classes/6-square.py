@@ -1,0 +1,77 @@
+#!/usr/bin/python3
+''' Defines a square. '''
+
+
+class Square:
+    ''' A class that defines a square. '''
+    def __init__(self, size=0, position=(0, 0)):
+        '''
+        The __init__ method with private attributes: size and postion.
+
+        Args:
+            size(int): the size of the square
+            position(tuple): a tuple of two posible integers
+        '''
+        self.__size = size
+        self.__position = position
+
+    def area(self):
+        ''' Computes the area of the square and returns the result. '''
+        return self.__size ** 2
+
+    def my_print(self):
+        '''
+        Prints in stdout the square with the character #. If the size
+        equals 0, an empty line is printed.
+        '''
+        for i in range(self.size):
+            a, b = self.__position
+            if b > 0:
+                print(" " * b, end="")
+            else:
+                print(" " * a, end="")
+            print("#" * self.size)
+        if self.size == 0:
+            print()
+
+    @property
+    def position(self):
+        ''' Getter method to retrieve the position attribute. '''
+        return self.__position
+
+    @position.setter
+    def position(self, value):
+        '''
+        Setter method to set the position attribute.
+
+        Args:
+            value(tuple): the position values to be set
+        '''
+        err_msg = "position must be a tuple of 2 positive integers"
+        if not isinstance(value, tuple) \
+        and len(value) != 2:
+            raise TypeError(err_msg)
+        for element in value:
+            if not isinstance(element, int) or element <= 0:
+                raise TypeError(err_msg)
+        self.__position = value
+
+
+    @property
+    def size(self):
+        ''' Getter method to retrieve the size attribute. '''
+        return self.__size
+
+    @size.setter
+    def size(self, value):
+        '''
+        Setter method to set the size attribute.
+
+        Args:
+            value(int): the size value to be set
+        '''
+        if type(value) != int:
+            raise TypeError("size must be an integer")
+        if value < 0:
+            raise ValueError("size must be >= 0")
+        self.__size = value
