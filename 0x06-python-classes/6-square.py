@@ -31,7 +31,6 @@ class Square:
                 print()
             for _ in range(self.__size):
                 print(" " * self.__position[0] + "#" * self.__size)
-        
 
     @property
     def position(self):
@@ -52,7 +51,6 @@ class Square:
                 all(i >= 0 for i in value):
             raise TypeError(err_msg)
         self.__position = value
-
 
     @property
     def size(self):
