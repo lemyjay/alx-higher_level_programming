@@ -25,7 +25,7 @@ class Square:
         equals 0, an empty line is printed.
         '''
         for i in range(self.size):
-            a, b = self.__position
+            a, b = self.position
             if b > 0:
                 print(" " * b, end="")
             else:
@@ -48,8 +48,7 @@ class Square:
             value(tuple): the position values to be set
         '''
         err_msg = "position must be a tuple of 2 positive integers"
-        if not isinstance(value, tuple) \
-        and len(value) != 2:
+        if not isinstance(value, tuple) or len(value) != 2:
             raise TypeError(err_msg)
         for element in value:
             if not isinstance(element, int) or element <= 0:
