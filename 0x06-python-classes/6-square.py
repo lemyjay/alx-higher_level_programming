@@ -29,11 +29,10 @@ class Square:
         Args:
             value(tuple): the position values to be set
         '''
-        err_msg = "position must be a tuple of 2 positive integers"
         if (not isinstance(value, tuple) or len(value) != 2 or not
                 all(isinstance(i, int) for i in value) or not
                 all(i >= 0 for i in value)):
-            raise TypeError(err_msg)
+            raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
 
     @property
