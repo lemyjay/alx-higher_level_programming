@@ -4,6 +4,7 @@
 
 class Square:
     ''' A class that defines a square. '''
+
     def __init__(self, size=0, position=(0, 0)):
         '''
         The __init__ method with private attributes: size and postion.
@@ -14,24 +15,6 @@ class Square:
         '''
         self.__size = size
         self.__position = position
-
-    def area(self):
-        ''' Computes the area of the square and returns the result. '''
-        return self.__size ** 2
-
-    def my_print(self):
-        '''
-        Prints in stdout the square with the character #. If the size
-        equals 0, an empty line is printed.
-        '''
-        if self.__size == 0:
-            print()
-            return
-        else:
-            for a in range(self.__position[1]):
-                print()
-            for b in range(self.__size):
-                print(" " * self.__position[0] + "#" * self.__size)
 
     @property
     def position(self):
@@ -71,3 +54,20 @@ class Square:
         if value < 0:
             raise ValueError("size must be >= 0")
         self.__size = value
+
+    def area(self):
+        ''' Computes the area of the square and returns the result. '''
+        return self.__size ** 2
+
+    def my_print(self):
+        '''
+        Prints in stdout the square with the character #. If the size
+        equals 0, an empty line is printed.
+        '''
+        if self.__size == 0:
+            print()
+        else:
+            for a in range(self.__position[1]):
+                print()
+            for b in range(self.__size):
+                print(" " * self.__position[0] + "#" * self.__size)
