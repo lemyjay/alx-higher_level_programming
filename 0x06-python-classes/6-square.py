@@ -24,15 +24,14 @@ class Square:
         Prints in stdout the square with the character #. If the size
         equals 0, an empty line is printed.
         '''
-        for i in range(self.size):
-            a, b = self.position
-            #if b > 0:
-            print(" " * b, end="")
-            #else:
-            #    print(" " * a, end="")
-            print("#" * self.size)
         if self.size == 0:
             print()
+        else:
+            for _ in range(self.__position[1]):
+                print()
+            for _ in range(self.__size):
+                print(" " * self.__position[0] + "#" * self.__size)
+        
 
     @property
     def position(self):
@@ -48,11 +47,10 @@ class Square:
             value(tuple): the position values to be set
         '''
         err_msg = "position must be a tuple of 2 positive integers"
-        if not isinstance(value, tuple) or len(value) != 2:
+        if not isinstance(value, tuple) or len(value) != 2 or not \
+                all(isinstance(i, int) for i in value) or not \
+                all(i >= 0 for i in value):
             raise TypeError(err_msg)
-        for element in value:
-            if not isinstance(element, int) or element <= 0:
-                raise TypeError(err_msg)
         self.__position = value
 
 
