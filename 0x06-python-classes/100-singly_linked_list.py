@@ -44,7 +44,7 @@ class Node:
         Args:
             value(node): can be none or a Node
         '''
-        if isinstance(value, Node) or value == None:
+        if isinstance(value, Node) or value is None:
             self.__next_node = value
         else:
             raise TypeError("next_node must be a Node object")
@@ -64,20 +64,28 @@ class SinglyLinkedList:
         
         Args:
             value(int): the integer to be inserted to the list'''
-        if self.__head == None:
-            self.__head = Node(value)
+        new_node = Node(value)
+
+        if self.__head is None or self.__head.data >= value:
+            new_node.next_node = self.__head
+            self.__head = new_node
         else:
             current = self.__head
-            if current.data <= value:
-                temp = Node(self.__head.data, self.__head.next_node)
-                self.__head = Node(value, temp)
-            else:
-                while current.next_node != None and (current.next_node).data < value:
+            while current.next_node != None and current.next_node.data < value:
                     current = current.next_node
-                if current.next_node is None:
-                    current.next_node = Node(value)
-                else:
-                    temp = Node(value, current.next_node)
-                    current.next_node = temp
-                    
+            if current.next_node is None:
+                   current.next_node = new_node
+            else:
+                new_node.next_node = current.next_node
+                current.next_node = new_node
+    
+    def __str__(self):
+        '''String representation of the linked list'''
+        result = []
+        current = self.__head
+        while current is not None:
+            result.append(str(current.data))
+            current = current.next_node
+
+        return result        
                 
