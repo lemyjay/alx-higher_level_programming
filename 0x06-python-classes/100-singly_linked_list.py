@@ -13,29 +13,29 @@ class Node:
         '''
         self.data = data
         self.next_node = next_node
-    
+
     @property
     def data(self):
         '''Getter method for retrieving data'''
         return self.__data
-    
+
     @data.setter
     def data(self, value):
         '''
         The setter method for inserting data to a node.
-        
+
         Args:
             value(int): the integer value to be inserted'''
         if isinstance(value, int):
             self.__data = value
         else:
             raise TypeError("data must be an integer")
-    
+
     @property
     def next_node(self):
         '''Getter method for retrieving a next node'''
         return self.__next_node
-    
+
     @next_node.setter
     def next_node(self, value):
         '''
@@ -57,11 +57,11 @@ class SinglyLinkedList:
         '''The initialization method for the class'''
         self.__head = None
 
-    def sorted_insert(self,value):
+    def sorted_insert(self, value):
         '''
         A method the inserts a new node into the correct position
         in the list(increasing order).
-        
+
         Args:
             value(int): the integer to be inserted to the list'''
         new_node = Node(value)
@@ -71,14 +71,15 @@ class SinglyLinkedList:
             self.__head = new_node
         else:
             current = self.__head
-            while current.next_node != None and current.next_node.data < value:
-                    current = current.next_node
+            while current.next_node is not None and\
+                    current.next_node.data < value:
+                current = current.next_node
             if current.next_node is None:
-                   current.next_node = new_node
+                current.next_node = new_node
             else:
                 new_node.next_node = current.next_node
                 current.next_node = new_node
-    
+
     def __str__(self):
         '''String representation of the linked list'''
         result = []
@@ -86,12 +87,5 @@ class SinglyLinkedList:
         while current is not None:
             result.append(str(current.data))
             current = current.next_node
-        final = ''
-        a = 0
-        for i in result:
-            a += 1
-            final.join(i)
-            if a != len(result):
-                final.join("\n")
-        
-        return final        
+
+        return "\n".join(result)
