@@ -1,5 +1,12 @@
 #!/usr/bin/python3
 
+'''
+Defines class Node (with private data and next_node attributes)
+Defines class SinglyLinkedList
+(with private head and public sorted_insert attributes)
+'''
+
+
 class Node:
     '''This class defines a node of a singly linked list'''
 
@@ -48,6 +55,11 @@ class Node:
             self.__next_node = value
         else:
             raise TypeError("next_node must be a Node object")
+
+
+"""
+class that defines a Singly Linked List
+"""
 
 
 class SinglyLinkedList:
