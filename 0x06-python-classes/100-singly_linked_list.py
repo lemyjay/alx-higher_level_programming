@@ -50,13 +50,13 @@ class Node:
             raise TypeError("next_node must be a Node object")
 
 
-class SinglyLinkeList:
+class SinglyLinkedList:
     '''A class that defines a singly linked list'''
 
     def __init__(self):
         '''The initialization method for the class'''
         self.__head = Node()
-        self.__head.__next_node = Node()
+        self.__head.next_node = Node()
     def sorted_insert(self,value):
         '''
         A method the inserts a new node into the correct position
