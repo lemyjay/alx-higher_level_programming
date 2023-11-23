@@ -87,5 +87,4 @@ class SinglyLinkedList:
             result.append(str(current.data))
             current = current.next_node
 
-        return result        
-                
+        return "".join(result)        
