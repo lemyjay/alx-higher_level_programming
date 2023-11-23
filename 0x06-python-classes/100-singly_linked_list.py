@@ -3,7 +3,7 @@
 class Node:
     '''This class defines a node of a singly linked list'''
 
-    def __int__(self, data, next_node=None):
+    def __init__(self, data, next_node=None):
         '''
         Initialization method for the class
 
@@ -44,7 +44,7 @@ class Node:
         Args:
             value(node): can be none or a Node
         '''
-        if isinstance(value, (Node, None)):
+        if isinstance(value, Node) or value == None:
             self.__next_node = value
         else:
             raise TypeError("next_node must be a Node object")
@@ -55,8 +55,8 @@ class SinglyLinkedList:
 
     def __init__(self):
         '''The initialization method for the class'''
-        self.__head = Node()
-        self.__head.next_node = Node()
+        self.__head = None
+
     def sorted_insert(self,value):
         '''
         A method the inserts a new node into the correct position
@@ -64,25 +64,20 @@ class SinglyLinkedList:
         
         Args:
             value(int): the integer to be inserted to the list'''
-        if self.__head.data == None:
-            self.__head.data = value
+        if self.__head == None:
+            self.__head = Node(value)
         else:
             current = self.__head
-            temp = Node()
-            temp.next_node = Node()
             if current.data <= value:
-                temp.data = self.__head.data
-                temp.next_node = self.__head.next_node
-                self.__head.data = value
-                self.__head.next_node = temp
+                temp = Node(self.__head.data, self.__head.next_node)
+                self.__head = Node(value, temp)
             else:
-                while current.next_node.data != None and current.next_node.data < value:
+                while current.next_node != None and (current.next_node).data < value:
                     current = current.next_node
-                if current.next_node.data is None:
-                    current.next_node.data = value
+                if current.next_node is None:
+                    current.next_node = Node(value)
                 else:
-                    temp.data = value
-                    temp.next_node = current.next_node
+                    temp = Node(value, current.next_node)
                     current.next_node = temp
                     
                 
