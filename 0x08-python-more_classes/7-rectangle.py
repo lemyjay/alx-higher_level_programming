@@ -92,8 +92,8 @@ class Rectangle:
             return ""
 
         symbols = self.print_symbol
-        if isinstance(self.print_symbol, list):
-            symbols = repr(self.print_symbol)
+        if isinstance(symbols, list):
+            symbols = repr(symbols)
 
         string = ""
         for i in range(self.__height):
