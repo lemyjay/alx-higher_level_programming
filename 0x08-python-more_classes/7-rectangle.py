@@ -4,7 +4,29 @@
 
 
 class Rectangle:
-    '''A class for creating/defining a rectangle.'''
+    """
+    Defines class rectangle with private attribute width and height
+
+    Args:
+        width (int): width
+        height (int): height
+
+    Attributes:
+        number_of_instances (int): number of instances created and not deleted
+        print_symbol (any type): used to print string representation
+
+    Functions:
+        __init__(self, width, height)
+        width(self)
+        width(self, value)
+        height(self)
+        height(self, value)
+        area(self)
+        perimeter(self)
+        __str__(self)
+        __repr__(self)
+        __del__(self)
+    """
 
     number_of_instances = 0
     print_symbol = '#'
@@ -94,7 +116,6 @@ class Rectangle:
         symbols = self.print_symbol
         if isinstance(symbols, list):
             symbols = repr(symbols)
-
         string = ""
         for i in range(self.__height):
             string += symbols * self.__width + "\n"
