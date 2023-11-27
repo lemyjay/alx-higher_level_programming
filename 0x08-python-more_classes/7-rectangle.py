@@ -7,7 +7,7 @@ class Rectangle:
     '''A class for creating/defining a rectangle.'''
 
     number_of_instances = 0
-    print_symbol = "#"
+    print_symbol = '#'
 
     def __init__(self, width=0, height=0):
         '''
@@ -109,7 +109,7 @@ class Rectangle:
             A string that when passed to eval(), would create an equivalent
             instance of the rectangle.
         '''
-        return f"Rectangle({self.__width}, {self.__height})"
+        return f"Rectangle(width={self.__width}, height={self.__height})"
 
     def __del__(self):
         '''Deletes an instance of the class'''
