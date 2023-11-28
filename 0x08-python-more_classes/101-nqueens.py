@@ -35,7 +35,8 @@ def is_safe(board, row, col, N):
 
 def solve_nqueens_util(board, row, N, solutions):
     """
-    Recursive utility function to solve the N-Queens problem using backtracking.
+    Recursive utility function to solve the N-Queens problem using
+    backtracking.
 
     Args:
         board (list): The chessboard.
@@ -95,5 +96,5 @@ if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: nqueens N")
         sys.exit(1)
-
+        
     solve_nqueens(sys.argv[1])
