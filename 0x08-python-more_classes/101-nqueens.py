@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import sys
 
+
 def is_safe(board, row, col, N):
     """
     Check if it's safe to place a queen at a given position.
@@ -31,6 +32,7 @@ def is_safe(board, row, col, N):
 
     return True
 
+
 def solve_nqueens_util(board, row, N, solutions):
     """
     Recursive utility function to solve the N-Queens problem.
@@ -59,6 +61,7 @@ def solve_nqueens_util(board, row, N, solutions):
             solve_nqueens_util(board, row + 1, N, solutions)
             board[row][col] = 0
 
+
 def solve_nqueens(N):
     """
     Solve the N-Queens problem and print solutions.
@@ -83,9 +86,10 @@ def solve_nqueens(N):
     solutions = []
 
     solve_nqueens_util(board, 0, N, solutions)
-
+    
     for solution in solutions:
         print(solution)
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
