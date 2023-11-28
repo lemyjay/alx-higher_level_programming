@@ -121,7 +121,7 @@ class Rectangle:
 
         string = ""
         for i in range(self.__height):
-            string += symbols * self.__width + "\n"
+            string += str(symbols) * self.__width + "\n"
         return string[:-1]
 
     def __repr__(self):
