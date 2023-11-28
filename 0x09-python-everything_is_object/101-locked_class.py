@@ -8,4 +8,4 @@ class LockedClass:
     """
     Prevents user from creating a new instance dynamically
     """
-    ___slots__ = 'first_name'
+    ___slots__ = "first_name"
