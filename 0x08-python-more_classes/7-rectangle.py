@@ -116,8 +116,6 @@ class Rectangle:
         symbols = self.print_symbol
         if isinstance(symbols, list):
             symbols = repr(symbols)
-        '''elif isinstance(symbols, (int, float)):
-            symbols = str(symbols)'''
 
         string = ""
         for i in range(self.__height):
