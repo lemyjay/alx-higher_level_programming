@@ -3,16 +3,17 @@
 Print square with #
 """
 
+
 def print_square(size):
     """
     A function that prints a square with the character #
-    
+
     Prototype:
         def print_square(size):
-    
+
     Args:
         size (int): The size length of the square
-    
+
     Raises:
         TypeError: if size is not an integer
                    if size is a float and less than 0
