@@ -10,7 +10,7 @@ def add_integer(a, b=98):
     A funtion that adds 2 integers.
 
     Prototype:
-    def add_integer(a, b=98)
+        def add_integer(a, b=98):
 
     Args:
         a (int or float): the first integer

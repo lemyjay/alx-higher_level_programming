@@ -8,6 +8,9 @@ def matrix_divided(matrix, div):
     """
     A function that divides all elements of a matrix
 
+    Prototype:
+        def matrix_divided(matrix, div):
+
     Args:
         matrix (list): the matrix, a list of lists of integers or floats
         div (int or float): the number by which each element in the matrix
