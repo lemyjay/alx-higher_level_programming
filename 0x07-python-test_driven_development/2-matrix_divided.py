@@ -29,15 +29,15 @@ def matrix_divided(matrix, div):
     err_div = "div must be a number"
     err_row = "Each row of the matrix must have the same size"
     err_0 = "division by zero"
-    row_len = len(matrix[0])
 
-    if not isinstance(matrix, list):
+    if not isinstance(matrix, list) or len(matrix) == 0 or len(matrix[0]) == 0:
         raise TypeError(err_matrix)
     if not isinstance(div, (int, float)):
         raise TypeError(err_div)
     if div == 0:
         raise ZeroDivisionError(err_0)
 
+    row_len = len(matrix[0])
     new_matrix = []
     for i in matrix:
         if not isinstance(i, list):
