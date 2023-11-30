@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""
+This module performs addition of two integers and sets the second to a
+default value of 98
+"""
+
 
 def add_integer(a, b=98):
     """
