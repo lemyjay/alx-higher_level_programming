@@ -21,13 +21,24 @@ def text_indentation(text):
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    new_line = False
+    string = ""
+    indicators = [".", "?", ":"]
+    prev = ""
+    start = True
     for i in text:
-        if i == "." or i == "?" or i == ":":
-            print(i)
-            new_line = True
+        if i == " " and start:
+            continue
         else:
-            if new_line and i == " ":
-                new_line = False
+            start = False
+            if i in indicators:
+                string += i
+                string += "\n"
+                prev = "\n"
             else:
-                print(i, end="")
+                if prev == "\n" and i == " ":
+                    continue
+                else:
+                    string += i
+                    prev = ""
+
+    print(string, end="")

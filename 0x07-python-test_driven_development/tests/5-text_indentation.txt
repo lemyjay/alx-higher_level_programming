@@ -16,6 +16,31 @@ SUCCESS CASES:
 How are you?
 Hope you Ok
 
+>>> indent_("Holberton. School? How are you: John")
+Holberton.
+School?
+How are you:
+John
+
+>>> indent_("No.Way")
+No.
+Way
+
+>>> indent_("    No.   Way")
+No.
+Way
+
+>>> indent_(" ")
+
+
+>>> indent_(" .")
+.
+
+
+>>> indent_(". ")
+.
+
+
 >>> indent_("Who came?:. Ok!")
 Who came?
 :
