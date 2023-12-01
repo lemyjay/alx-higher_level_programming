@@ -58,7 +58,6 @@ def matrix_mul(m_a, m_b):
     if num_of_colums_matA != num_of_rows_matB:
         raise ValueError("m_a and m_b can't be multiplied")
     new_matrix = []
-    k = 0
     for i in m_a:
         t = []
         h = []
