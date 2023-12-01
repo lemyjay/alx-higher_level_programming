@@ -67,7 +67,7 @@ def matrix_mul(m_a, m_b):
             result = 0
             for c in range(len(t)):
                 result += (t[c] * i[c])
-        h.append(result)
+            h.append(result)
         new_matrix.append(h)
         k += 1
     return new_matrix
