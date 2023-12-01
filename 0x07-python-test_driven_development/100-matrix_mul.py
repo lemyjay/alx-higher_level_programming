@@ -59,9 +59,9 @@ def matrix_mul(m_a, m_b):
         raise ValueError("m_a and m_b can't be multiplied")
     new_matrix = []
     for i in m_a:
-        t = []
         h = []
         for k in range(len(m_b[0])):
+            t = []
             for a in m_b:
                 t.append(a[k])
             result = 0
