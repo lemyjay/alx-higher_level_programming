@@ -10,24 +10,31 @@ SUCCESS CASES:
 
 >>> indent_(":")
 :
+<BLANKLINE>
 
 
 >>> indent_("How are you? Hope you Ok")
 How are you?
+<BLANKLINE>
 Hope you Ok
 
 >>> indent_("Holberton. School? How are you: John")
 Holberton.
+<BLANKLINE>
 School?
+<BLANKLINE>
 How are you:
+<BLANKLINE>
 John
 
 >>> indent_("No.Way")
 No.
+<BLANKLINE>
 Way
 
 >>> indent_("    No.   Way")
 No.
+<BLANKLINE>
 Way
 
 >>> indent_(" ")
@@ -35,23 +42,30 @@ Way
 
 >>> indent_(" .")
 .
+<BLANKLINE>
 
 
 >>> indent_(". ")
 .
+<BLANKLINE>
 
 
 >>> indent_("Who came?:. Ok!")
 Who came?
+<BLANKLINE>
 :
+<BLANKLINE>
 .
+<BLANKLINE>
 Ok!
 
 >>> indent_(": Yeah? OK.")
 :
+<BLANKLINE>
 Yeah?
+<BLANKLINE>
 OK.
-
+<BLANKLINE>
 
 >>> str1 = "Hello"
 >>> str2 = " World!"

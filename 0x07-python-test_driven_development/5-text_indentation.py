@@ -32,7 +32,7 @@ def text_indentation(text):
             start = False
             if i in indicators:
                 string += i
-                string += "\n"
+                string += "\n\n"
                 prev = "\n"
             else:
                 if prev == "\n" and i == " ":
