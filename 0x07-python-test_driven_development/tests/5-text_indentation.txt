@@ -1,1 +1,57 @@
-#
+# run python3 -m doctest -v ./tests/5-text_indentation.txt to tests
+
+#importing the module
+>>> indent_ = __import__("5-text_indentation").text_indentation
+
+SUCCESS CASES:
+
+>>> indent_("")
+
+
+>>> indent_(":")
+
+
+>>> indent_("How are you? Hope you Ok)
+How are you?
+Hope you Ok
+
+>>> indent_("Who came?:. Ok!)
+Who came?
+:
+.
+Ok!
+
+>>> indent_("Yeah?  OK.")
+Yeah?
+OK.
+
+
+>>> str1 = "Hello"
+>>> str2 = " World!"
+>>> indent_(str1 + str2)
+Hello World!
+
+
+FAIL CASES:
+
+>>> indent_(6)
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+
+>>> indent_()
+Traceback (most recent call last):
+...
+TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+>>> indent_(None)
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+
+>>> str1 = "Hello"
+>>> str2 = " World"
+>>> indent_(str1, str2)
+Traceback (most recent call last):
+...
+TypeError: text_indentation() takes 1 positional argument but 2 were given
