@@ -1,0 +1,54 @@
+# Test cases for matrix_mul function
+
+# run test using python3 -m doctest -v ./tests/100-matrix_mul.txt 
+
+#importing module
+>>> matrix_mul = __import__("100-matrix_mul").matrix_mul
+
+
+SUCCESS CASES:
+
+# Right input type and valid matrices
+>>> matrix_mul([[1, 2], [3, 4]], [[5, 6], [7, 8]])
+[[19, 22], [43, 50]]
+
+>>> matrix_mul([[1.0, 2.5], [3.3, 4.7]], [[5.2, 6.1], [7.4, 8.9]])
+[[19.6, 23.6], [41.15, 50.92]]
+
+# Edge case: empty matrices
+>>> matrix_mul([], [])
+ValueError: m_a can't be empty
+
+>>> matrix_mul([[1, 2], [3, 4]], [])
+ValueError: m_b can't be empty
+
+
+FAIL CASES:
+
+# Wrong input type
+>>> matrix_mul()
+TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+
+>>> matrix_mul([[1, 2], [3, 4]], "")
+TypeError: matrix_mul() argument 'm_b' must be a list of lists
+
+>>> matrix_mul("", [[1, 2], [3, 4]])
+TypeError: matrix_mul() argument 'm_a' must be a list of lists
+
+# Matrices with invalid elements
+>>> matrix_mul([[1, 2], [3, "four"]], [[5, 6], [7, 8]])
+TypeError: m_a should contain only integers or floats
+
+>>> matrix_mul([[1, 2], [3, 4]], [[5, 6], [7, "eight"]])
+TypeError: m_b should contain only integers or floats
+
+# Non-rectangular matrices
+>>> matrix_mul([[1, 2], [3, 4, 5]], [[5, 6], [7, 8]])
+TypeError: each row of m_a must be of the same size
+
+>>> matrix_mul([[1, 2], [3, 4]], [[5, 6], [7]])
+TypeError: each row of m_b must be of the same size
+
+# Matrices that can't be multiplied
+>>> matrix_mul([[1, 2], [3, 4]], [[5, 6], [7, 8], [9, 10]])
+ValueError: m_a and m_b can't be multiplied
