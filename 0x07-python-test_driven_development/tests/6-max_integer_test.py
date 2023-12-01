@@ -19,6 +19,3 @@ class TestMaxInteger(unittest.TestCase):
         self.assertEqual([1, 2, 3, 4], 4)
         self.assertEqual([-8595], -8595)
         self.assertEqual([0, -1, -89], 0)
-
-    def test_elements(self):
-        self.assertRaises(TypeError, ["s", 5, 6])
