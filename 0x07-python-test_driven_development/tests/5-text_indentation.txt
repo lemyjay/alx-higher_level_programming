@@ -9,19 +9,21 @@ SUCCESS CASES:
 
 
 >>> indent_(":")
+:
 
 
->>> indent_("How are you? Hope you Ok)
+>>> indent_("How are you? Hope you Ok")
 How are you?
 Hope you Ok
 
->>> indent_("Who came?:. Ok!)
+>>> indent_("Who came?:. Ok!")
 Who came?
 :
 .
 Ok!
 
->>> indent_("Yeah?  OK.")
+>>> indent_(": Yeah? OK.")
+:
 Yeah?
 OK.
 
