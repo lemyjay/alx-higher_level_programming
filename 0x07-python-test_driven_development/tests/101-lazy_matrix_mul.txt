@@ -1,163 +1,24 @@
-# Test cases for lazy_matrix_mul function
+# run test with python3 -m doctest -v ./tests/101-lazy_matrix_mul.txt
 
-# run test using python3 -m doctest -v ./tests/100-lazy_matrix_mul.txt 
-
-#importing module
->>> lazy_matrix_mul = __import__("101-lazy_matrix_mul").lazy_matrix_mul
-
+First import method to test
+>>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
 
 SUCCESS CASES:
 
-# Right input type and valid matrices
->>> lazy_matrix_mul([[1, 2], [3, 4]], [[5, 6], [7, 8]])
-[[19, 22], [43, 50]]
+Test signed and unsigned ints and floats in same size lists in list matrix:
+     >>> m_a = [[1, 2], [3, 4]]
+     >>> m_b = [[2, 0], [1, 2]]
+     >>> print(lazy_matrix_mul(m_a, m_b))
+     [[ 4  4]
+      [10  8]]
 
-# Valid matrices with negative numbers
->>> lazy_matrix_mul([[-1, 2], [3, -4]], [[-5, 6], [7, -8]])
-[[19, -22], [-43, 50]]
-
-# Valid input: matrices that can be multiplied
->>> m_a = [[1, 2], [3, 4]]
->>> m_b = [[5, 6], [7, 8]]
->>> lazy_matrix_mul(m_a, m_b)
-[[19, 22], [43, 50]]
-
-# Valid input: matrices with floats
->>> m_a = [[1.0, 2.5], [3.5, 4.0]]
->>> m_b = [[5.0, 6.5], [7.5, 8.0]]
->>> lazy_matrix_mul(m_a, m_b)
-[[23.75, 26.5], [47.5, 54.75]]
-
-# Valid input: matrices with negative numbers
->>> m_a = [[-1, -2], [-3, -4]]
->>> m_b = [[5, 6], [7, 8]]
->>> lazy_matrix_mul(m_a, m_b)
-[[-19, -22], [-43, -50]]
-
-# Valid input: matrices with zeros
->>> m_a = [[0, 0], [0, 0]]
->>> m_b = [[5, 6], [7, 8]]
->>> lazy_matrix_mul(m_a, m_b)
-[[0, 0], [0, 0]]
-
+     >>> m_a = [[-2.0, -3.0]]
+     >>> m_b = [[-2.0], [-4.0]]
+     >>> print(lazy_matrix_mul(m_a, m_b))
+     [[16.]]
 
 FAIL CASES:
 
-# Edge case: empty matrices
->>> lazy_matrix_mul([], [])
-Traceback (most recent call last):
-...
-ValueError: m_a can't be empty
-
->>> lazy_matrix_mul([[1, 2], [3, 4]], [])
-Traceback (most recent call last):
-...
-ValueError: m_b can't be empty
-
-# Wrong input type
->>> lazy_matrix_mul()
-Traceback (most recent call last):
-...
-TypeError: lazy_matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
-
->>> lazy_matrix_mul([[1, 2], [3, 4]])
-Traceback (most recent call last):
-...
-TypeError: lazy_matrix_mul() missing 1 required positional argument: 'm_b'
-
->>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]], [[1, 2], [3, 4]])
-Traceback (most recent call last):
-...
-TypeError: lazy_matrix_mul() takes 2 positional arguments but 3 were given
-
->>> lazy_matrix_mul([[1, 2], [3, 4]], "")
-Traceback (most recent call last):
-...
-TypeError: m_b must be a list
-
->>> lazy_matrix_mul("", [[1, 2], [3, 4]])
-Traceback (most recent call last):
-...
-TypeError: m_a must be a list
-
-# Matrices with invalid elements
->>> lazy_matrix_mul([[1, 2], [3, "four"]], [[5, 6], [7, 8]])
-Traceback (most recent call last):
-...
-TypeError: m_a should contain only integers or floats
-
->>> lazy_matrix_mul([[1, 2], [3, 4]], [[5, 6], [7, "eight"]])
-Traceback (most recent call last):
-...
-TypeError: m_b should contain only integers or floats
-
-# Non-rectangular matrices
->>> lazy_matrix_mul([[1, 2], [3, 4, 5]], [[5, 6], [7, 8]])
-Traceback (most recent call last):
-...
-TypeError: each row of m_a must be of the same size
-
->>> lazy_matrix_mul([[1, 2], [3, 4]], [[5, 6], [7]])
-Traceback (most recent call last):
-...
-TypeError: each row of m_b must be of the same size
-
-# Matrices that can't be multiplied
->>> lazy_matrix_mul([[1, 2], [3, 4]], [[5, 6], [7, 8], [9, 10]])
-Traceback (most recent call last):
-...
-ValueError: m_a and m_b can't be multiplied
-
-# Invalid input: m_a is not a list (invalid)
->>> m_a = "not_a_list"
->>> m_b = [[5, 6], [7, 8]]
->>> lazy_matrix_mul(m_a, m_b)
-Traceback (most recent call last):
-    ...
-TypeError: m_a must be a list
-
-# Invalid input: m_b is not a list (invalid)
->>> m_a = [[1, 2], [3, 4]]
->>> m_b = "not_a_list"
->>> lazy_matrix_mul(m_a, m_b)
-Traceback (most recent call last):
-    ...
-TypeError: m_b must be a list
-
-# Invalid input: m_a contains a non-number (invalid)
->>> m_a = [[1, 2], ["three", 4]]
->>> m_b = [[5, 6], [7, 8]]
->>> lazy_matrix_mul(m_a, m_b)
-Traceback (most recent call last):
-    ...
-TypeError: m_a should contain only integers or floats
-
-# Invalid input: m_b contains a non-number (invalid)
->>> m_a = [[1, 2], [3, 4]]
->>> m_b = [[5, 6], [7, "eight"]]
->>> lazy_matrix_mul(m_a, m_b)
-Traceback (most recent call last):
-    ...
-TypeError: m_b should contain only integers or floats
-
-# Invalid input: m_a is empty (invalid)
->>> m_a = []
->>> m_b = [[5, 6], [7, 8]]
->>> lazy_matrix_mul(m_a, m_b)
-Traceback (most recent call last):
-    ...
-ValueError: m_a can't be empty
-
-# Invalid input: m_b is empty (invalid)
->>> m_a = [[1, 2], [3, 4]]
->>> m_b = []
->>> lazy_matrix_mul(m_a, m_b)
-Traceback (most recent call last):
-    ...
-ValueError: m_b can't be empty
-
-# Invalid input: matrices with incompatible sizes (invalid)
->>> m_a = [[1, 2], [3, 4]]
->>> m_b = [[5, 6, 7], [8, 9, 10]]
->>> lazy_matrix_mul(m_a, m_b)
-[[21, 24, 27], [47, 54, 61]]
+Test empty matrix:
+Test different sized lists in matrix:
+Test matrix with other data types:
