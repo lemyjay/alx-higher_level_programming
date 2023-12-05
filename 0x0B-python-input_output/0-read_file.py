@@ -15,5 +15,4 @@ def read_file(filename=""):
         filename (str): The name of the file. Default is an empty string
     """
     with open(filename, 'r', encoding="utf-8") as f:
-        content = f.read()
-        print(content)
+        print(f.read())
