@@ -15,7 +15,10 @@ def write_file(filename="", text=""):
     Args:
         filename (str): The name of the file. Default is an empty string
         text (str): The content to be written to the file. Default is an empty
-        string
+                    string
+
+    Returns:
+        The number of characters written
     '''
     with open(filename, 'w', encoding='utf-8') as f:
         num = f.write(text)
