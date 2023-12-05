@@ -5,17 +5,15 @@ Save Object to a file
 import json
 
 
-def save_to_json_file(my_obj, filename):
+def load_from_json_file(filename):
     """
-    A function that writes an Object to a text file, using a JSON
-    representation
+    A function that creates an Object from a “JSON file”
 
     Prototype:
-        def save_to_json_file(my_obj, filename):
+        def load_from_json_file(filename):
 
     Args:
-        my_obj: The object to be serialized to a JSON-formatted string.
-        filename (str): The name of the file
+        filename (str): The name of the JSON file
     """
-    with open(filename, 'w', encoding='utf-8') as f:
-        f.write(json.dumps(my_obj))
+    with open(filename, 'r', encoding='utf-8') as f:
+        json.loads(f.read())
