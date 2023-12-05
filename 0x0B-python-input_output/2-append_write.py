@@ -18,7 +18,7 @@ def append_write(filename="", text=""):
                     empty string
 
     Returns:
-        The number of characters added.'''
+        int: The number of characters added.'''
     with open(filename, 'a', encoding='utf-8') as f:
         num = f.write(text)
         return num
