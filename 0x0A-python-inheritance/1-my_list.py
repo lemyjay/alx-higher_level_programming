@@ -16,4 +16,5 @@ class MyList(list):
     """
     def print_sorted(self):
         # Prints the list but in ascending order
-        return self.sorted()
+        new = self.sorted()
+        return new
