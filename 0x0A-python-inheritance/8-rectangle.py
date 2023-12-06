@@ -2,6 +2,7 @@
 '''
 Rectangle
 '''
+BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
 class Rectangle(BaseGeometry):
@@ -24,7 +25,7 @@ class Rectangle(BaseGeometry):
             TypeError: If width or height is not an integer.
             ValueError: If width or height is less than or equal to 0.
         """
-        integer_validator(self, width, width)
+        BaseGeometry.integer_validator(self, width, width)
         self.__width = width
-        integer_validator(self, height, height)
+        BaseGeometry.integer_validator(self, height, height)
         self.__heigth = height
