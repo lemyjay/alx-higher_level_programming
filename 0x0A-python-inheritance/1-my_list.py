@@ -14,6 +14,6 @@ class MyList(list):
     Assumptions:
         - All elements of the list will be of type int.
     """
-    def pint_sorted(self):
+    def print_sorted(self):
         # Prints the list but in ascending order
-        return sort(self)
+        return [self.sort()]
