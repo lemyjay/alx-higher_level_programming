@@ -16,4 +16,4 @@ class MyList(list):
     """
     def pint_sorted(self):
         # Prints the list but in ascending order
-        self.sort()
+        return sort(self)
