@@ -13,7 +13,7 @@ class MyInt(int):
     def __eq__(self, other):
         """Override the equality operator."""
         return not super().__eq__(other)
-    
+ 
     def __ne__(self, other):
         """Override the inequality operator."""
         return not super().__ne__(other)
