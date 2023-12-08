@@ -164,6 +164,32 @@ class TestRectangle(unittest.TestCase):
             expected_output = "##\n##\n"
             self.assertEqual(mock_stdout.getvalue(), expected_output)
 
+    def test_display_with_position(self):
+        """
+        Test case for displaying a rectangle with a specified position.
+        """
+        r = Rectangle(4, 6, 2, 3)
+        with patch("sys.stdout", new_callable=StringIO) as mock_stdout:
+            r.display()
+            expected_output = "\n\n\n  ####\n  ####\n  ####\n  ####\n  ####\n  ####\n"
+            self.assertEqual(mock_stdout.getvalue(), expected_output)
+
+    def test_display_with_overlap(self):
+        """
+        Test case for displaying rectangles with overlapping positions.
+        """
+        r1 = Rectangle(3, 3, 1, 1)
+        r2 = Rectangle(4, 4, 2, 2)
+        with patch("sys.stdout", new_callable=StringIO) as mock_stdout:
+            r1.display()
+            r2.display()
+            expected_output = (
+                "   ###\n   ###\n   ###\n"
+                "\n"
+                "    ####\n    ####\n    ####\n    ####\n"
+            )
+            self.assertEqual(mock_stdout.getvalue(), expected_output)
+
     def test_str_representation(self):
         """
         Test case for checking the string representation of the Rectangle.

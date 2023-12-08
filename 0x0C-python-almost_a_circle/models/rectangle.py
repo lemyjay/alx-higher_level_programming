@@ -21,6 +21,13 @@ class Rectangle(Base):
     Methods:
         __init__(self, width, height, x=0, y=0, id=None): Constructor for
         Rectangle.
+
+    Public methods:
+        area(self): Returns the area value of the Rectangle instance.
+        display(self): Prints in stdout the Rectangle instance with the
+        character '#', taking care of x and y.
+        __str__(self): Overrides the __str__ method to return a string
+        representation of the Rectangle.
     """
     def __init__(self, width, height, x=0, y=0, id=None):
         """
@@ -126,10 +133,13 @@ class Rectangle(Base):
     
     def display(self):
         """
-        Prints in stdout the Rectangle instance with the character '#'.
+        Prints in stdout the Rectangle instance with the character '#', taking
+        care of x and y.
         """
+        for _ in range(self.__y):
+            print()
         for _ in range(self.__height):
-            print("#" * self.__width)
+            print(" " * self.__x + "#" * self.__width)
     
     def __str__(self):
         """
