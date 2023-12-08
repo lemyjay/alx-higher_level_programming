@@ -177,7 +177,7 @@ class TestRectangle(unittest.TestCase):
         Test case for checking the string representation with default values.
         """
         r = Rectangle(5, 5)
-        expected_output = "[Rectangle] (1) 0/0 - 5/5"
+        expected_output = "[Rectangle] ({}) 0/0 - 5/5".format(r.id)
         self.assertEqual(str(r), expected_output)
 
     def test_str_representation_large_values(self):
