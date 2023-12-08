@@ -7,10 +7,12 @@ Base class
 class Base:
     """
     The Base class is the foundation for all other classes in this project.
-    It manages the 'id' attribute, ensuring its proper assignment based on the provided argument.
+    It manages the 'id' attribute, ensuring its proper assignment based on the
+    provided argument.
 
     Attributes:
-        __nb_objects (int): A private class attribute to keep track of the number of objects created.
+        __nb_objects (int): A private class attribute to keep track of the
+        number of objects created.
 
     Methods:
         __init__(self, id=None): The class constructor.
