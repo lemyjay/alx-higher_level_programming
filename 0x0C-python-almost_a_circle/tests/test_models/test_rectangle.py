@@ -5,6 +5,8 @@ Unittest for the rectangle module (Rectangle class)
 # File: tests/test_models/test_rectangle.py
 import unittest
 from models.rectangle import Rectangle
+from io import StringIO
+from unittest.mock import patch
 
 
 class TestRectangle(unittest.TestCase):
@@ -141,6 +143,35 @@ class TestRectangle(unittest.TestCase):
         """
         r = Rectangle(10**6, 10**6)
         self.assertEqual(r.area(), 10**12)
+
+    def test_display(self):
+        """
+        Test case for displaying a rectangle.
+        """
+        r = Rectangle(4, 6)
+        with patch("sys.stdout", new_callable=StringIO) as mock_stdout:
+            r.display()
+            expected_output = "####\n####\n####\n####\n####\n####\n"
+            self.assertEqual(mock_stdout.getvalue(), expected_output)
+
+    def test_display_small_rectangle(self):
+        """
+        Test case for displaying a small rectangle.
+        """
+        r = Rectangle(2, 2)
+        with patch("sys.stdout", new_callable=StringIO) as mock_stdout:
+            r.display()
+            expected_output = "##\n##\n"
+            self.assertEqual(mock_stdout.getvalue(), expected_output)
+
+    def test_display_empty_rectangle(self):
+        """
+        Test case for displaying an empty rectangle.
+        """
+        r = Rectangle(0, 0)
+        with patch("sys.stdout", new_callable=StringIO) as mock_stdout:
+            r.display()
+            self.assertEqual(mock_stdout.getvalue(), "")
 
 
 if __name__ == '__main__':
