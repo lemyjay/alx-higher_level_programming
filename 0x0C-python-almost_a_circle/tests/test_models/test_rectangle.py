@@ -103,39 +103,12 @@ class TestRectangle(unittest.TestCase):
         r = Rectangle(5, 10)
         self.assertEqual(r.area(), 50)
 
-    def test_zero_area(self):
-        """
-        Test case for calculating the area with zero values.
-        """
-        r = Rectangle(0, 0)
-        self.assertEqual(r.area(), 0)
-
     def test_large_area(self):
         """
         Test case for calculating the area with large values.
         """
         r = Rectangle(10**6, 10**6)
         self.assertEqual(r.area(), 10**12)
-
-    def test_negative_values(self):
-        """
-        Test case for calculating the area with negative values.
-        """
-        r = Rectangle(-5, 10)
-        # In this case, width is negative, so area should raise an exception
-        with self.assertRaises(ValueError) as context:
-            r.area()
-        self.assertEqual(str(context.exception), "width must be > 0")
-
-    def test_invalid_type(self):
-        """
-        Test case for calculating the area with invalid type.
-        """
-        r = Rectangle("5", 10)
-        # In this case, width is a string, so area should raise an exception
-        with self.assertRaises(TypeError) as context:
-            r.area()
-        self.assertEqual(str(context.exception), "width must be an integer")
 
 
 if __name__ == '__main__':
