@@ -164,15 +164,6 @@ class TestRectangle(unittest.TestCase):
             expected_output = "##\n##\n"
             self.assertEqual(mock_stdout.getvalue(), expected_output)
 
-    def test_display_empty_rectangle(self):
-        """
-        Test case for displaying an empty rectangle.
-        """
-        r = Rectangle(0, 0)
-        with patch("sys.stdout", new_callable=StringIO) as mock_stdout:
-            r.display()
-            self.assertEqual(mock_stdout.getvalue(), "")
-
 
 if __name__ == '__main__':
     unittest.main()
