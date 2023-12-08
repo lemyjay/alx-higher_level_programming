@@ -204,34 +204,39 @@ class TestRectangle(unittest.TestCase):
         Test case for updating Rectangle attributes with *args.
         """
         r = Rectangle(5, 5, 5, 5, 1)
+        self.assertEqual(r.id, 1)
+        self.assertEqual(r.width, 5)
+        self.assertEqual(r.height, 5)
+        self.assertEqual(r.x, 5)
+        self.assertEqual(r.y, 5)
 
         r.update(10)
         self.assertEqual(r.id, 10)
         self.assertEqual(r.width, 5)
         self.assertEqual(r.height, 5)
         self.assertEqual(r.x, 5)
-        self.assertEqual(r.y, 1)
+        self.assertEqual(r.y, 5)
 
         r.update(10, 20)
         self.assertEqual(r.id, 10)
         self.assertEqual(r.width, 20)
         self.assertEqual(r.height, 5)
         self.assertEqual(r.x, 5)
-        self.assertEqual(r.y, 1)
+        self.assertEqual(r.y, 5)
 
         r.update(10, 20, 30)
         self.assertEqual(r.id, 10)
         self.assertEqual(r.width, 20)
         self.assertEqual(r.height, 30)
         self.assertEqual(r.x, 5)
-        self.assertEqual(r.y, 1)
+        self.assertEqual(r.y, 5)
 
         r.update(10, 20, 30, 40)
         self.assertEqual(r.id, 10)
         self.assertEqual(r.width, 20)
         self.assertEqual(r.height, 30)
         self.assertEqual(r.x, 40)
-        self.assertEqual(r.y, 1)
+        self.assertEqual(r.y, 5)
 
         r.update(10, 20, 30, 40, 50)
         self.assertEqual(r.id, 10)
