@@ -164,6 +164,30 @@ class TestRectangle(unittest.TestCase):
             expected_output = "##\n##\n"
             self.assertEqual(mock_stdout.getvalue(), expected_output)
 
+    def test_str_representation(self):
+        """
+        Test case for checking the string representation of the Rectangle.
+        """
+        r = Rectangle(4, 6, 2, 1, 12)
+        expected_output = "[Rectangle] (12) 2/1 - 4/6"
+        self.assertEqual(str(r), expected_output)
+
+    def test_str_representation_default_values(self):
+        """
+        Test case for checking the string representation with default values.
+        """
+        r = Rectangle(5, 5)
+        expected_output = "[Rectangle] (1) 0/0 - 5/5"
+        self.assertEqual(str(r), expected_output)
+
+    def test_str_representation_large_values(self):
+        """
+        Test case for checking the string representation with large values.
+        """
+        r = Rectangle(10**6, 10**6, 10**6, 10**6, 999)
+        expected_output = "[Rectangle] (999) 1000000/1000000 - 1000000/1000000"
+        self.assertEqual(str(r), expected_output)
+
 
 if __name__ == '__main__':
     unittest.main()
