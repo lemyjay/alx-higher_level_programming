@@ -78,11 +78,13 @@ class TestRectangle(unittest.TestCase):
         """
         Test instantiation with zero values.
         """
-        r = Rectangle(0, 0, 0, 0)
-        self.assertRaises(r.width, ValueError("width must be > 0"))
-        self.assertRaises(r.height, ValueError("height must be > 0"))
-        self.assertEqual(r.x, 0)
-        self.assertEqual(r.y, 0)
+        with self.assertRaises(ValueError) as context:
+            r = Rectangle(0, 0, 0, 0)
+        self.assertEqual(str(context.exception), "width must be > 0")
+
+        with self.assertRaises(ValueError) as context:
+            r = Rectangle(1, 0, 0, 0)
+        self.assertEqual(str(context.exception), "height must be > 0")
 
     def test_large_values(self):
         """
