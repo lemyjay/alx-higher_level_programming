@@ -86,6 +86,38 @@ class TestRectangle(unittest.TestCase):
             r = Rectangle(1, 0, 0, 0)
         self.assertEqual(str(context.exception), "height must be > 0")
 
+    def test_float_width(self):
+        """
+        Test case for width with float value.
+        """
+        with self.assertRaises(TypeError) as context:
+            r = Rectangle(5.5, 10)
+        self.assertEqual(str(context.exception), "width must be an integer")
+
+    def test_float_height(self):
+        """
+        Test case for height with float value.
+        """
+        with self.assertRaises(TypeError) as context:
+            r = Rectangle(5, 10.5)
+        self.assertEqual(str(context.exception), "height must be an integer")
+
+    def test_float_x(self):
+        """
+        Test case for x with float value.
+        """
+        with self.assertRaises(TypeError) as context:
+            r = Rectangle(5, 10, 2.5)
+        self.assertEqual(str(context.exception), "x must be an integer")
+
+    def test_float_y(self):
+        """
+        Test case for y with float value.
+        """
+        with self.assertRaises(TypeError) as context:
+            r = Rectangle(5, 10, 2, 7.5)
+        self.assertEqual(str(context.exception), "y must be an integer")
+
     def test_large_values(self):
         """
         Test instantiation with large values.
