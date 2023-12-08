@@ -14,14 +14,18 @@ class Base:
 
     Methods:
         __init__(self, id=None): The class constructor.
-            If 'id' is not None, assign it to the public instance attribute 'id'.
-            Otherwise, increment __nb_objects and assign the new value to 'id'.
     """
     __nb_objects = 0
 
     def __init__(self, id=None):
+        """
+        The class constructor.
+
+        If 'id' is not None, assign it to the public instance attribute 'id'.
+        Otherwise, increment __nb_objects and assign the new value to 'id'.
+        """
         if id is not None:
             self.id = id
         else:
             Base.__nb_objects += 1
-            self.id = id
+            self.id = Base.__nb_objects
