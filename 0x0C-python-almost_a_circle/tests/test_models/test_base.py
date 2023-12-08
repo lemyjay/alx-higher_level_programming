@@ -13,7 +13,7 @@ class TestBase(unittest.TestCase):
 
     def test_constructor_with_id(self):
         """
-        Test constructor when providing an id.
+        Test constructor when providing a positive integer id.
         """
         obj = Base(42)
         self.assertEqual(obj.id, 42)
@@ -33,7 +33,7 @@ class TestBase(unittest.TestCase):
         """
         with self.assertRaises(ValueError) as context:
             Base(-5)
-        self.assertEqual(str(context.exception), "id must be >= 0")
+        self.assertEqual(str(context.exception), "id must be greater than 0")
 
     def test_constructor_with_float_id(self):
         """

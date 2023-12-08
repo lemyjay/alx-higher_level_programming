@@ -24,7 +24,12 @@ class Base:
         If 'id' is not None, assign it to the public instance attribute 'id'.
         Otherwise, increment __nb_objects and assign the new value to 'id'.
         """
+
         if id is not None:
+            if type(id) is not int:
+                raise TypeError("id must be an integer")
+            if id <= 0:
+                raise ValueError("id must be greater than 0")
             self.id = id
         else:
             Base.__nb_objects += 1
