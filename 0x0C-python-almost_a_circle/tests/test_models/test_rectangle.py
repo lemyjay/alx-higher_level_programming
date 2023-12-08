@@ -199,6 +199,47 @@ class TestRectangle(unittest.TestCase):
         expected_output = "[Rectangle] (999) 1000000/1000000 - 1000000/1000000"
         self.assertEqual(str(r), expected_output)
 
+    def test_update(self):
+        """
+        Test case for updating Rectangle attributes with *args.
+        """
+        r = Rectangle(5, 5, 5, 5, 1)
+
+        r.update(10)
+        self.assertEqual(r.id, 10)
+        self.assertEqual(r.width, 5)
+        self.assertEqual(r.height, 5)
+        self.assertEqual(r.x, 5)
+        self.assertEqual(r.y, 1)
+
+        r.update(10, 20)
+        self.assertEqual(r.id, 10)
+        self.assertEqual(r.width, 20)
+        self.assertEqual(r.height, 5)
+        self.assertEqual(r.x, 5)
+        self.assertEqual(r.y, 1)
+
+        r.update(10, 20, 30)
+        self.assertEqual(r.id, 10)
+        self.assertEqual(r.width, 20)
+        self.assertEqual(r.height, 30)
+        self.assertEqual(r.x, 5)
+        self.assertEqual(r.y, 1)
+
+        r.update(10, 20, 30, 40)
+        self.assertEqual(r.id, 10)
+        self.assertEqual(r.width, 20)
+        self.assertEqual(r.height, 30)
+        self.assertEqual(r.x, 40)
+        self.assertEqual(r.y, 1)
+
+        r.update(10, 20, 30, 40, 50)
+        self.assertEqual(r.id, 10)
+        self.assertEqual(r.width, 20)
+        self.assertEqual(r.height, 30)
+        self.assertEqual(r.x, 40)
+        self.assertEqual(r.y, 50)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -28,6 +28,7 @@ class Rectangle(Base):
         character '#', taking care of x and y.
         __str__(self): Overrides the __str__ method to return a string
         representation of the Rectangle.
+        update(self, *args): Update the Rectangle attributes based on the provided arguments.
     """
     def __init__(self, width, height, x=0, y=0, id=None):
         """
@@ -155,3 +156,28 @@ class Rectangle(Base):
                 self.id, self.__x, self.__y,
                 self.__width, self.__height
                 )
+    
+    def update(self, *args):
+        """
+        Update the Rectangle attributes based on the provided arguments.
+
+        Args:
+            *args: Variable number of arguments.
+                1st argument: Value to assign to the id attribute.
+                2nd argument: Value to assign to the width attribute.
+                3rd argument: Value to assign to the height attribute.
+                4th argument: Value to assign to the x attribute.
+                5th argument: Value to assign to the y attribute.
+        """
+        if args:
+            if len(args) >= 1:
+                self.id = args[0]
+            if len(args) >= 2:
+                self.width = args[1]
+            if len(args) >= 3:
+                self.height = args[2]
+            if len(args) >= 4:
+                self.x = args[3]
+            if len(args) >= 5:
+                self.y = args[4]
+                
