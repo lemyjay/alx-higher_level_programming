@@ -171,7 +171,8 @@ class TestRectangle(unittest.TestCase):
         r = Rectangle(4, 6, 2, 3)
         with patch("sys.stdout", new_callable=StringIO) as mock_stdout:
             r.display()
-            expected_output = "\n\n\n  ####\n  ####\n  ####\n  ####\n  ####\n  ####\n"
+            expected_output = "\n\n\n  ####\n  ####\n  ####\n  "
+            expected_output += "####\n  ####\n  ####\n"
             self.assertEqual(mock_stdout.getvalue(), expected_output)
 
     def test_str_representation(self):

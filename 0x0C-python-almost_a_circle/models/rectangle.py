@@ -121,7 +121,7 @@ class Rectangle(Base):
         if (value < 0):
             raise ValueError("y must be >= 0")
         self.__y = value
-    
+
     def area(self):
         """
         Returns the area value of the Rectangle instance.
@@ -130,7 +130,7 @@ class Rectangle(Base):
             int: The area of the rectangle.
         """
         return self.__height * self.__width
-    
+
     def display(self):
         """
         Prints in stdout the Rectangle instance with the character '#', taking
@@ -140,13 +140,18 @@ class Rectangle(Base):
             print()
         for _ in range(self.__height):
             print(" " * self.__x + "#" * self.__width)
-    
+
     def __str__(self):
         """
-        Override the __str__ method to return a string representation of the Rectangle.
+        Override the __str__ method to return a string representation of
+        the Rectangle.
 
         Returns:
             str: A string representation of the Rectangle in the format:
             [Rectangle] (<id>) <x>/<y> - <width>/<height>
-    """
-        return "[{}] ({}) {}/{} - {}/{}".format(self.__class__.__name__, self.id, self.__x, self.__y, self.__width, self.__height)
+        """
+        return "[{}] ({}) {}/{} - {}/{}".format(
+                self.__class__.__name__,
+                self.id, self.__x, self.__y,
+                self.__width, self.__height
+                )
