@@ -94,7 +94,6 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.x, 10**6)
         self.assertEqual(r.y, 10**6)
 
-    # Add more test cases for other validation scenarios and edge cases
 
 if __name__ == '__main__':
     unittest.main()
