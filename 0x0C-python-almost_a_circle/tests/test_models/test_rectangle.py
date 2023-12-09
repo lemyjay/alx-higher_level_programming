@@ -128,7 +128,7 @@ class TestRectangle(unittest.TestCase):
             r = Rectangle(10, 20, 30, 40, 50, 60)  # Extra argument
         self.assertEqual(
             str(context.exception),
-            "__init__() takes from 5 to 6 positional arguments but 7 were given"
+            "__init__() takes from 3 to 6 positional arguments but 7 were given"
             )
 
     def test_large_values(self):
