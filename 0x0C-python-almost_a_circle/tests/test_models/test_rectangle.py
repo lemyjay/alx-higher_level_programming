@@ -199,9 +199,9 @@ class TestRectangle(unittest.TestCase):
         expected_output = "[Rectangle] (999) 1000000/1000000 - 1000000/1000000"
         self.assertEqual(str(r), expected_output)
 
-    def test_update(self):
+    def test_update_with_args(self):
         """
-        Test case for updating Rectangle attributes with *args.
+        Test case for updating Rectangle attributes using *args.
         """
         r = Rectangle(5, 5, 5, 5, 1)
         self.assertEqual(r.id, 1)
@@ -244,6 +244,38 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.height, 30)
         self.assertEqual(r.x, 40)
         self.assertEqual(r.y, 50)
+
+        r1 = Rectangle(10, 20, 30, 40, 50)
+        r1.update(1, 2, 3, 4, 5)
+        self.assertEqual(r1.id, 1)
+        self.assertEqual(r1.width, 2)
+        self.assertEqual(r1.height, 3)
+        self.assertEqual(r1.x, 4)
+        self.assertEqual(r1.y, 5)
+
+    def test_update_with_kwargs(self):
+        """
+        Test case for updating attributes using **kwargs.
+        """
+        r = Rectangle(10, 20, 30, 40, 50)
+        r.update(id=1, width=2, height=3, x=4, y=5)
+        self.assertEqual(r.id, 1)
+        self.assertEqual(r.width, 2)
+        self.assertEqual(r.height, 3)
+        self.assertEqual(r.x, 4)
+        self.assertEqual(r.y, 5)
+
+    def test_update_with_args_and_kwargs(self):
+        """
+        Test case for updating attributes using both *args and **kwargs.
+        """
+        r = Rectangle(10, 20, 30, 40, 50)
+        r.update(1, 2, 3, 4, 5, id=6, width=7, height=8, x=9, y=10)
+        self.assertEqual(r.id, 1)   # *args takes precedence
+        self.assertEqual(r.width, 2)  # *args takes precedence
+        self.assertEqual(r.height, 3)  # *args takes precedence
+        self.assertEqual(r.x, 4)  # *args takes precedence
+        self.assertEqual(r.y, 5)  # *args takes precedence
 
 
 if __name__ == '__main__':
