@@ -11,7 +11,7 @@ class TestBase(unittest.TestCase):
     Test cases for the Base class.
     """
 
-    def test_constructor_with_id(self):
+    def test_constructor_with_positive_id(self):
         """
         Test constructor when providing a positive integer id.
         """
