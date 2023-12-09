@@ -24,11 +24,15 @@ class Rectangle(Base):
 
     Public methods:
         area(self): Returns the area value of the Rectangle instance.
+
         display(self): Prints in stdout the Rectangle instance with the
         character '#', taking care of x and y.
+
         __str__(self): Overrides the __str__ method to return a string
         representation of the Rectangle.
-        update(self, *args, **kwargs): Update the Rectangle attributes based on the provided arguments.
+
+        update(self, *args, **kwargs): Update the Rectangle attributes based
+        on the provided arguments.
     """
     def __init__(self, width, height, x=0, y=0, id=None):
         """
@@ -156,7 +160,7 @@ class Rectangle(Base):
                 self.id, self.__x, self.__y,
                 self.__width, self.__height
                 )
-    
+
     def update(self, *args, **kwargs):
         """
         Update the Rectangle attributes based on the provided arguments.
