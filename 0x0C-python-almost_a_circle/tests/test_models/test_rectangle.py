@@ -120,6 +120,17 @@ class TestRectangle(unittest.TestCase):
             r = Rectangle(5, 10, 2, 7.5)
         self.assertEqual(str(context.exception), "y must be an integer")
 
+    def test_init_with_extra_args(self):
+        """
+        Test case for initializing a Rectangle with extra arguments.
+        """
+        with self.assertRaises(TypeError) as context:
+            r = Rectangle(10, 20, 30, 40, 50, 60)  # Extra argument
+        self.assertEqual(
+            str(context.exception),
+            "__init__() takes from 5 to 6 positional arguments but 7 were given"
+            )
+
     def test_large_values(self):
         """
         Test instantiation with large values.
@@ -276,6 +287,30 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.height, 3)  # *args takes precedence
         self.assertEqual(r.x, 4)  # *args takes precedence
         self.assertEqual(r.y, 5)  # *args takes precedence
+
+    def test_update_with_extra_args(self):
+        """
+        Test case for updating attributes with extra *args.
+        """
+        r = Rectangle(10, 20, 30, 40, 50)
+        r.update(1, 2, 3, 4, 5, 6)  # Extra argument
+        self.assertEqual(r.id, 1)
+        self.assertEqual(r.width, 2)
+        self.assertEqual(r.height, 3)
+        self.assertEqual(r.x, 4)
+        self.assertEqual(r.y, 5)
+
+    def test_update_with_extra_kwargs(self):
+        """
+        Test case for updating attributes with extra **kwargs.
+        """
+        r = Rectangle(10, 20, 30, 40, 50)
+        r.update(id=1, width=2, height=3, x=4, y=5, extra=6)  # Extra keyword argument
+        self.assertEqual(r.id, 1)
+        self.assertEqual(r.width, 2)
+        self.assertEqual(r.height, 3)
+        self.assertEqual(r.x, 4)
+        self.assertEqual(r.y, 5)
 
 
 if __name__ == '__main__':
