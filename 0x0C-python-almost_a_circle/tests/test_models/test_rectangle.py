@@ -124,12 +124,11 @@ class TestRectangle(unittest.TestCase):
         """
         Test case for initializing a Rectangle with extra arguments.
         """
+        err_msg = "__init__() takes from 3 to 6 positional arguments"
+        err_msg += " but 7 were given"
         with self.assertRaises(TypeError) as context:
             r = Rectangle(10, 20, 30, 40, 50, 60)  # Extra argument
-        self.assertEqual(
-            str(context.exception),
-            "__init__() takes from 3 to 6 positional arguments but 7 were given"
-            )
+        self.assertEqual(str(context.exception), err_msg)
 
     def test_large_values(self):
         """
@@ -305,7 +304,8 @@ class TestRectangle(unittest.TestCase):
         Test case for updating attributes with extra **kwargs.
         """
         r = Rectangle(10, 20, 30, 40, 50)
-        r.update(id=1, width=2, height=3, x=4, y=5, extra=6)  # Extra keyword argument
+        # Extra keyword argument
+        r.update(id=1, width=2, height=3, x=4, y=5, extra=6)
         self.assertEqual(r.id, 1)
         self.assertEqual(r.width, 2)
         self.assertEqual(r.height, 3)
