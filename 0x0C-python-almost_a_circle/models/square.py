@@ -47,3 +47,26 @@ class Square(Rectangle):
                 self.id, self.x, self.y,
                 self.width
                 )
+
+    @property
+    def size(self):
+        """Get or set the size of the square.
+
+        Returns:
+            int: The size of the square, which is both the width and height.
+
+        Notes:
+            The size is determined by the width and height attributes, as they are
+            always equal in a square.
+        """
+        return self.width
+
+    @size.setter
+    def size(self, value):
+        """Set the size of the square.
+
+        Args:
+            value (int): The new size to set for both width and height.
+        """
+        self.width = value
+        self.height = value
