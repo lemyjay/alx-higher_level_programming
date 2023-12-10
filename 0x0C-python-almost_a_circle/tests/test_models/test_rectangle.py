@@ -4,6 +4,7 @@ Unittest for the rectangle module (Rectangle class)
 """
 # File: tests/test_models/test_rectangle.py
 import unittest
+import os
 from models.base import Base
 from models.rectangle import Rectangle
 from io import StringIO
@@ -365,6 +366,41 @@ class TestRectangle(unittest.TestCase):
                 .format(str(r1.id), str(r2.id))
                 )
         self.assertEqual(sorted(json_result_multiple), sorted(result))
+
+    def test_save_to_file_normal_case(self):
+        """
+        Test saving a list of Rectangle instances to a file.
+        """
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        Rectangle.save_to_file([r1, r2])
+
+        with open("Rectangle.json", "r") as file:
+            content = file.read()
+            self.assertEqual(content, '[{"y": 8, "x": 2, "id": 1, "width": 10, "height": 7}, {"y": 0, "x": 0, "id": 2, "width": 2, "height": 4}]')
+
+    def test_save_to_file_empty_list(self):
+        """
+        Test saving an empty list to a file.
+        """
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", "r") as file:
+            content = file.read()
+            self.assertEqual(content, '[]')
+
+    def test_save_to_file_with_None(self):
+        """
+        Test saving None to a file.
+        """
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", "r") as file:
+            content = file.read()
+            self.assertEqual(content, '[]')
+
+    def tearDown(self):
+        # Clean up created files after each test
+        if os.path.exists("Rectangle.json"):
+            os.remove("Rectangle.json")
 
 
 if __name__ == '__main__':

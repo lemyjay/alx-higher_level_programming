@@ -3,6 +3,7 @@
 Unittest for the square module (Square class)
 """
 import unittest
+import os
 from models.base import Base
 from models.square import Square
 from io import StringIO
@@ -280,6 +281,41 @@ class TestSquare(unittest.TestCase):
                 .format(str(s1.id), str(s2.id))
                 )
         self.assertEqual(sorted(json_result_multiple), sorted(result))
+
+    def test_save_to_file_normal_case(self):
+        """
+        Test saving a list of Square instances to a file.
+        """
+        s1 = Square(5, 2, 1, 9)
+        s2 = Square(3, 0, 0, 5)
+        Square.save_to_file([s1, s2])
+
+        with open("Square.json", "r") as file:
+            content = file.read()
+            self.assertEqual(content, '[{"id": 9, "size": 5, "x": 2, "y": 1}, {"id": 5, "size": 3, "x": 0, "y": 0}]')
+
+    def test_save_to_file_empty_list(self):
+        """
+        Test saving an empty list to a file.
+        """
+        Square.save_to_file([])
+        with open("Square.json", "r") as file:
+            content = file.read()
+            self.assertEqual(content, '[]')
+
+    def test_save_to_file_with_None(self):
+        """
+        Test saving None to a file.
+        """
+        Square.save_to_file(None)
+        with open("Square.json", "r") as file:
+            content = file.read()
+            self.assertEqual(content, '[]')
+
+    def tearDown(self):
+        # Clean up created files after each test
+        if os.path.exists("Square.json"):
+            os.remove("Square.json")
 
 
 if __name__ == '__main__':
