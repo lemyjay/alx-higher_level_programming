@@ -29,7 +29,7 @@ class TestSquare(unittest.TestCase):
         """
         with self.assertRaises(ValueError) as context:
             s = Square(-5)
-        self.assertEqual(str(context.exception), "size must be > 0")
+        self.assertEqual(str(context.exception), "width must be > 0")
 
     def test_invalid_x(self):
         """
@@ -87,7 +87,7 @@ class TestSquare(unittest.TestCase):
         """
         with self.assertRaises(TypeError) as context:
             s = Square("5", 2, 1, 1)
-        self.assertEqual(str(context.exception), "size must be an integer")
+        self.assertEqual(str(context.exception), "width must be an integer")
 
     def test_zero_values(self):
         """
@@ -95,7 +95,7 @@ class TestSquare(unittest.TestCase):
         """
         with self.assertRaises(ValueError) as context:
             s = Square(0, 0, 0, 0)
-        self.assertEqual(str(context.exception), "size must be > 0")
+        self.assertEqual(str(context.exception), "width must be > 0")
 
     def test_float_values(self):
         """
@@ -103,7 +103,7 @@ class TestSquare(unittest.TestCase):
         """
         with self.assertRaises(TypeError) as context:
             s = Square(5.5, 2, 1, 1)
-        self.assertEqual(str(context.exception), "size must be an integer")
+        self.assertEqual(str(context.exception), "width must be an integer")
 
 
     def test_valid_area(self):
