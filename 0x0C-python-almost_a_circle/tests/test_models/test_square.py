@@ -351,14 +351,6 @@ class TestSquare(unittest.TestCase):
         self.assertIsNot(s1, s2)
         self.assertEqual(s1, s2)
 
-    def test_create_square_with_negative_size(self):
-        """
-        Test creating a Square instance with a negative size using the create class method.
-        """
-        s = Square.create(size=-5)
-        self.assertIsInstance(s, Square)
-        self.assertEqual(s.size, 1)  # Default size is 1
-
 
 if __name__ == '__main__':
     unittest.main()

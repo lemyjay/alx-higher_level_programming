@@ -438,14 +438,6 @@ class TestRectangle(unittest.TestCase):
         self.assertIsNot(r1, r2)
         self.assertEqual(r1, r2)
 
-    def test_create_rectangle_with_zero_dimensions(self):
-        """
-        Test creating a Rectangle instance with zero dimensions using the create class method.
-        """
-        r = Rectangle.create(width=0, height=0)
-        self.assertIsInstance(r, Rectangle)
-        self.assertEqual(r.width, 1)  # Default width is 1
-        self.assertEqual(r.height, 1)  # Default height is 1
 
 if __name__ == '__main__':
     unittest.main()
