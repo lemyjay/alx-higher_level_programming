@@ -340,6 +340,25 @@ class TestSquare(unittest.TestCase):
         result = Square.from_json_string(json_string)
         self.assertEqual(result, [])
 
+    def test_create_square(self):
+        """
+        Test creating a Square instance using the create class method.
+        """
+        s1 = Square(4, 2)
+        s1_dictionary = s1.to_dictionary()
+        s2 = Square.create(**s1_dictionary)
+        self.assertIsInstance(s2, Square)
+        self.assertIsNot(s1, s2)
+        self.assertEqual(s1, s2)
+
+    def test_create_square_with_negative_size(self):
+        """
+        Test creating a Square instance with a negative size using the create class method.
+        """
+        s = Square.create(size=-5)
+        self.assertIsInstance(s, Square)
+        self.assertEqual(s.size, 1)  # Default size is 1
+
 
 if __name__ == '__main__':
     unittest.main()

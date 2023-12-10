@@ -114,6 +114,34 @@ class TestBase(unittest.TestCase):
         result = Base.from_json_string(json_string)
         self.assertEqual(result, [])
 
+    def test_create_with_id(self):
+        """
+        Test creating a Base instance with an explicit ID using the create class method.
+        """
+        obj = Base(42)
+        obj_dict = obj.to_dictionary()
+        new_obj = Base.create(**obj_dict)
+        self.assertIsInstance(new_obj, Base)
+        self.assertIsNot(obj, new_obj)
+        self.assertEqual(obj.id, new_obj.id)
+
+    def test_create_with_empty_dict(self):
+        """
+        Test creating a Base instance with an empty dictionary using the create class method.
+        """
+        obj = Base.create()
+        self.assertIsInstance(obj, Base)
+        self.assertEqual(obj.id, 1)
+
+    def test_create_with_custom_attributes(self):
+        """
+        Test creating a Base instance with custom attributes using the create class method.
+        """
+        obj = Base.create(custom_attr="test")
+        self.assertIsInstance(obj, Base)
+        self.assertEqual(obj.id, 2)  # Default ID is 1, and the nb_objects is incremented
+        self.assertEqual(obj.custom_attr, "test")
+
 
 if __name__ == '__main__':
     unittest.main()
