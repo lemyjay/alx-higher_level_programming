@@ -84,10 +84,12 @@ class Square(Rectangle):
                 - the third argument should be the x attribute.
                 - the fourth argument should be the y attribute.
 
-            **kwargs: Double pointer to a dictionary representing
-                        key/value pairs.
-                - Each key in the dictionary represents an attribute to the instance.
-                - **kwargs must be skipped if *args exists and is not empty.
+            **kwargs: Variable number of keyword arguments.
+            If kwargs is not empty, update attributes based on key/value pairs.
+
+        Note:
+            **kwargs is skipped if *args exists and is not empty.
+            Each key in kwargs represents an attribute to the instance.
         """
         attributes = ["id", "size", "x", "y"]
 
