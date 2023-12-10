@@ -102,7 +102,7 @@ class TestSquare(unittest.TestCase):
         Test case for zero values but with valid id
         """
         with self.assertRaises(ValueError) as context:
-            s = Square(, 0, 0, 1)
+            s = Square(0, 0, 0, 1)
         self.assertEqual(str(context.exception), "width must be > 0")
 
     def test_float_values(self):
