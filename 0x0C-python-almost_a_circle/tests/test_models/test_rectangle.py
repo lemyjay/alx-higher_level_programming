@@ -378,7 +378,7 @@ class TestRectangle(unittest.TestCase):
 
         with open("Rectangle.json", "r") as file:
             content = file.read()
-            expected = '[{"y": 8, "x": 2, "id": {}, "width": 10, "height": 7}, {"y": 0, "x": 0, "id": {}, "width": 2, "height": 4}]'.format(str(r1.id), str(r2.id))
+            expected = '[{{"y": 8, "x": 2, "id": {}, "width": 10, "height": 7}}, {{"y": 0, "x": 0, "id": {}, "width": 2, "height": 4}}]'.format(str(r1.id), str(r2.id))
             self.assertEqual(json.loads(content), json.loads(expected))
 
     def test_save_to_file_empty_list(self):
