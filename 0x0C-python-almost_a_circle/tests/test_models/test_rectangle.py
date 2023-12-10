@@ -5,6 +5,7 @@ Unittest for the rectangle module (Rectangle class)
 # File: tests/test_models/test_rectangle.py
 import unittest
 import os
+import json
 from models.base import Base
 from models.rectangle import Rectangle
 from io import StringIO
@@ -377,13 +378,8 @@ class TestRectangle(unittest.TestCase):
 
         with open("Rectangle.json", "r") as file:
             content = file.read()
-            result = [
-                {"y": 8, "x": 2, "id": 1, "width": 10, "height": 7},
-                {"y": 0, "x": 0, "id": 2, "width": 2, "height": 4}
-                ]
-            sorted_content = sorted(content, key=lambda x: x['id'])
-            sorted_result = sorted(result, key=lambda x: x['id'])
-            self.assertEqual(sorted_content, sorted_result)
+            expected = '[{"y": 8, "x": 2, "id": 1, "width": 10, "height": 7}, {"y": 0, "x": 0, "id": 2, "width": 2, "height": 4}]'
+            self.assertEqual(json.loads(content), json.loads(expected))
 
     def test_save_to_file_empty_list(self):
         """
