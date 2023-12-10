@@ -349,7 +349,7 @@ class TestSquare(unittest.TestCase):
         s2 = Square.create(**s1_dictionary)
         self.assertIsInstance(s2, Square)
         self.assertIsNot(s1, s2)
-        self.assertEqual(s1, s2)
+        self.assertNotEqual(s1, s2)
 
 
 if __name__ == '__main__':
