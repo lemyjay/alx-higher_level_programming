@@ -193,17 +193,17 @@ class Rectangle(Base):
                 if key in attributes:
                     setattr(self, key, value)
 
-        def to_dictionary(self):
-            """
-            Returns a dictionary representation of a Rectangle.
+    def to_dictionary(self):
+        """
+        Returns a dictionary representation of a Rectangle.
 
-            Returns:
-                dict: A dictionary containing id, width, height, x, and y.
-            """
-            return {
-                'id': self.id,
-                'width': self.width,
-                'height': self.height,
-                'x': self.x,
-                'y': self.y
-                }
+        Returns:
+            dict: A dictionary containing id, width, height, x, and y.
+        """
+        return {
+            'id': self.id,
+            'width': self.width,
+            'height': self.height,
+            'x': self.x,
+            'y': self.y
+            }
