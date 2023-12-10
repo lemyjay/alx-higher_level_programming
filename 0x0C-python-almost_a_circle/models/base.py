@@ -118,7 +118,6 @@ class Base:
         from models.square import Square
 
 
-        dummy_instance = cls(1, 1) 
         if cls.__name__ == "Rectangle":
             dummy_instance = Rectangle(1, 1)  # Dummy instance with mandatory attributes
         elif cls.__name__ == "Square":
