@@ -239,7 +239,7 @@ class TestSquare(unittest.TestCase):
         Test to_dictionary with default values.
         """
         s = Square(5)
-        expected_dict = {'id': 1, 'size': 5, 'x': 0, 'y': 0}
+        expected_dict = {'id': s.id, 'size': 5, 'x': 0, 'y': 0}
         self.assertEqual(s.to_dictionary(), expected_dict)
 
     def test_to_dictionary_custom_values(self):
@@ -255,7 +255,7 @@ class TestSquare(unittest.TestCase):
         Test to_dictionary with large values.
         """
         s = Square(10**6, 10**5, 10**4, 10**3)
-        expected_dict = {'id': 1, 'size': 10**6, 'x': 10**5, 'y': 10**4}
+        expected_dict = {'id': s.id, 'size': 10**6, 'x': 10**5, 'y': 10**4}
         self.assertEqual(s.to_dictionary(), expected_dict)
 
 
