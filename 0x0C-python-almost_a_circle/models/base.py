@@ -123,5 +123,7 @@ class Base:
         elif cls.__name__ == "Square":
             dummy_instance = Square(1)  # Dummy instance with mandatory attributes
 
-        dummy_instance.update(**dictionary)  # Apply real values using update method
+        if dictionary:  # Check if the dictionary is not empty
+            dummy_instance.update(**dictionary)  # Apply real values using update method
+
         return dummy_instance
