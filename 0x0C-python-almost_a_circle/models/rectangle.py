@@ -33,6 +33,8 @@ class Rectangle(Base):
 
         update(self, *args, **kwargs): Update the Rectangle attributes based
         on the provided arguments.
+
+     to_dictionary(self): Returns a dictionary representation of a Rectangle.   
     """
     def __init__(self, width, height, x=0, y=0, id=None):
         """
@@ -190,3 +192,18 @@ class Rectangle(Base):
             for key, value in kwargs.items():
                 if key in attributes:
                     setattr(self, key, value)
+
+        def to_dictionary(self):
+            """
+            Returns a dictionary representation of a Rectangle.
+
+            Returns:
+                dict: A dictionary containing id, width, height, x, and y.
+            """
+            return {
+                'id': self.id,
+                'width': self.width,
+                'height': self.height,
+                'x': self.x,
+                'y': self.y
+                }

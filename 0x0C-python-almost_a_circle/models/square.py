@@ -20,6 +20,9 @@ class Square(Rectangle):
 
         __str__(self): Overrides the __str__ method to return a string
         representation of the Square.
+
+        update(self, *args, **kwargs): Update the Square attributes based
+        on the provided arguments.
     """
     def __init__(self, size, x=0, y=0, id=None):
         """

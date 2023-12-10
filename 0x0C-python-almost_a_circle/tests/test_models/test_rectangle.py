@@ -312,6 +312,30 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.x, 4)
         self.assertEqual(r.y, 5)
 
+    def test_to_dictionary_default_values(self):
+        """
+        Test case for to_dictionary with default values.
+        """
+        r = Rectangle(5, 5)
+        expected_dict = {'id': r.id, 'width': 5, 'height': 5, 'x': 0, 'y': 0}
+        self.assertEqual(r.to_dictionary(), expected_dict)
+
+    def test_to_dictionary_non_default_values(self):
+        """
+        Test case for to_dictionary with non-default values.
+        """
+        r = Rectangle(10, 8, 2, 4, 7)
+        expected_dict = {'id': 7, 'width': 10, 'height': 8, 'x': 2, 'y': 4}
+        self.assertEqual(r.to_dictionary(), expected_dict)
+
+    def test_to_dictionary_large_values(self):
+        """
+        Test case for to_dictionary with large values.
+        """
+        r = Rectangle(10**6, 10**6, 10**6, 10**6, 999)
+        expected_dict = {'id': 999, 'width': 10**6, 'height': 10**6, 'x': 10**6, 'y': 10**6}
+        self.assertEqual(r.to_dictionary(), expected_dict)
+
 
 if __name__ == '__main__':
     unittest.main()
