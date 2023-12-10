@@ -50,20 +50,22 @@ class Square(Rectangle):
 
     @property
     def size(self):
-        """Get or set the size of the square.
+        """
+        Get or set the size of the square.
 
         Returns:
             int: The size of the square, which is both the width and height.
 
         Notes:
-            The size is determined by the width and height attributes, as they are
-            always equal in a square.
+            The size is determined by the width and height attributes,
+            as they are always equal in a square.
         """
         return self.width
 
     @size.setter
     def size(self, value):
-        """Set the size of the square.
+        """
+        Set the size of the square.
 
         Args:
             value (int): The new size to set for both width and height.
@@ -72,17 +74,18 @@ class Square(Rectangle):
         self.height = value
 
     def update(self, *args, **kwargs):
-        """Update the square's attributes with specified values.
+        """
+        Update the square's attributes with specified values.
 
         Args:
-            *args: List of arguments.
-                - If provided, the first argument should be the id attribute.
-                - If provided, the second argument should be the size attribute.
-                - If provided, the third argument should be the x attribute.
-                - If provided, the fourth argument should be the y attribute.
+            *args: List of arguments. If provided;
+                - the first argument should be the id attribute.
+                - the second argument should be the size attribute.
+                - the third argument should be the x attribute.
+                - the fourth argument should be the y attribute.
 
-        Keyword Args:
-            **kwargs: Double pointer to a dictionary representing key/value pairs.
+            **kwargs: Double pointer to a dictionary representing
+                        key/value pairs.
                 - Each key in the dictionary represents an attribute to the instance.
                 - **kwargs must be skipped if *args exists and is not empty.
         """
