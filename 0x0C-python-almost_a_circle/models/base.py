@@ -28,8 +28,11 @@ class Base:
     Class Methods:
         save_to_file(cls, list_objs): Save a list of instances to a JSON file.
 
-         create(cls, **dictionary): Create an instance with attributes set
+        create(cls, **dictionary): Create an instance with attributes set
                                     from a dictionary.
+
+        load_from_file(cls): Load instances from a JSON file and return a list
+                             of instances.
     """
     __nb_objects = 0
 
@@ -128,3 +131,21 @@ class Base:
             dummy_instance.update(**dictionary)  # Apply real values using update method
 
         return dummy_instance
+
+    @classmethod
+    def load_from_file(cls):
+        """
+        Load instances from a JSON file and return a list of instances.
+
+        Returns:
+            list: List of instances loaded from the JSON file.
+        """
+        filename = "{}.json".format(cls.__name__)
+        try:
+            with open(filename, "r") as file:
+                content = file.read()
+                list_dicts = cls.from_json_string(content)
+                list_instances = [cls.create(**item) for item in list_dicts]
+                return list_instances
+        except FileNotFoundError:
+            return []

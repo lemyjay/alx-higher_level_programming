@@ -351,6 +351,34 @@ class TestSquare(unittest.TestCase):
         self.assertIsNot(s1, s2)
         self.assertNotEqual(s1, s2)
 
+    def test_load_from_file_square(self):
+        """
+        Test loading Square instances from a file.
+        """
+        s1 = Square(4)
+        s2 = Square(2)
+        Square.save_to_file([s1, s2])
+
+        obj_list = Square.load_from_file()
+        self.assertEqual(len(obj_list), 2)
+        self.assertIsInstance(obj_list[0], Square)
+        self.assertIsInstance(obj_list[1], Square)
+
+    def test_load_from_file_square_with_parameters(self):
+        """
+        Test loading Square instances with more parameters from a file.
+        """
+        s1 = Square(4, 2, 1, 10)
+        s2 = Square(2, 0, 0, 23)
+        Square.save_to_file([s1, s2])
+
+        obj_list = Square.load_from_file()
+        self.assertEqual(len(obj_list), 2)
+        self.assertIsInstance(obj_list[0], Square)
+        self.assertIsInstance(obj_list[1], Square)
+        self.assertEqual(obj_list[0].id, 10)
+        self.assertEqual(obj_list[1].id, 23)
+
 
 if __name__ == '__main__':
     unittest.main()

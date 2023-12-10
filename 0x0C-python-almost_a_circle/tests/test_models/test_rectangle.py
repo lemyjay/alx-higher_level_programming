@@ -438,6 +438,34 @@ class TestRectangle(unittest.TestCase):
         self.assertIsNot(r1, r2)
         self.assertNotEqual(r1, r2)
 
+    def test_load_from_file_rectangle(self):
+        """
+        Test loading Rectangle instances from a file.
+        """
+        r1 = Rectangle(5, 10)
+        r2 = Rectangle(3, 6)
+        Rectangle.save_to_file([r1, r2])
+
+        obj_list = Rectangle.load_from_file()
+        self.assertEqual(len(obj_list), 2)
+        self.assertIsInstance(obj_list[0], Rectangle)
+        self.assertIsInstance(obj_list[1], Rectangle)
+
+    def test_load_from_file_rectangle_with_parameters(self):
+        """
+        Test loading Rectangle instances with more parameters from a file.
+        """
+        r1 = Rectangle(5, 10, 2, 3, 99)
+        r2 = Rectangle(3, 6, 0, 0, 42)
+        Rectangle.save_to_file([r1, r2])
+
+        obj_list = Rectangle.load_from_file()
+        self.assertEqual(len(obj_list), 2)
+        self.assertIsInstance(obj_list[0], Rectangle)
+        self.assertIsInstance(obj_list[1], Rectangle)
+        self.assertEqual(obj_list[0].id, 99)
+        self.assertEqual(obj_list[1].id, 42)
+
 
 if __name__ == '__main__':
     unittest.main()

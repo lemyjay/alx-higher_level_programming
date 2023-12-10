@@ -114,6 +114,13 @@ class TestBase(unittest.TestCase):
         result = Base.from_json_string(json_string)
         self.assertEqual(result, [])
 
+    def test_load_from_file_base(self):
+        """
+        Test loading instances from a file for the Base class.
+        """
+        obj_list = Base.load_from_file()
+        self.assertEqual(obj_list, [])
+
 
 if __name__ == '__main__':
     unittest.main()
