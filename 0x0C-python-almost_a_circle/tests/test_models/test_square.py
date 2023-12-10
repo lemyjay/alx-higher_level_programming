@@ -264,7 +264,7 @@ class TestSquare(unittest.TestCase):
         s = Square(4, 2, 3, 7)
         dictionary = s.to_dictionary()
         json_result_normal = Base.to_json_string([dictionary])
-        self.assertEqual(json_result_normal, '[{"id": {}, "size": 4, "x": 2, "y": 3}]'.format(s.id))
+        self.assertEqual(json_result_normal, '[{"id": {}, "size": 4, "x": 2, "y": 3}]'.format(str(s.id)))
 
     def test_to_json_string_edge_cases(self):
         # Test case: List with multiple dictionaries
@@ -273,7 +273,7 @@ class TestSquare(unittest.TestCase):
         dictionary1 = s1.to_dictionary()
         dictionary2 = s2.to_dictionary()
         json_result_multiple = Base.to_json_string([dictionary1, dictionary2])
-        self.assertEqual(json_result_multiple, '[{"id": {}, "size": 5, "x": 2, "y": 1}, {"id": {}, "size": 3, "x": 0, "y": 0}]'.format(s1.id, s2.id))
+        self.assertEqual(json_result_multiple, '[{"id": {}, "size": 5, "x": 2, "y": 1}, {"id": {}, "size": 3, "x": 0, "y": 0}]'.format(str(s1.id), str(s2.id)))
 
 
 if __name__ == '__main__':
