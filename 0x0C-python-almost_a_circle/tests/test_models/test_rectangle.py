@@ -408,6 +408,25 @@ class TestRectangle(unittest.TestCase):
         if os.path.exists("Rectangle.json"):
             os.remove("Rectangle.json")
 
+    def test_from_json_string_rectangle_normal_case(self):
+        # Test case: Normal case for Rectangle
+        json_string = '[{"id": 1, "width": 5, "height": 10, "x": 2, "y": 3}]'
+        result = Rectangle.from_json_string(json_string)
+        expected = [{'id': 1, 'width': 5, 'height': 10, 'x': 2, 'y': 3}]
+        self.assertEqual(result, expected)
+
+    def test_from_json_string_rectangle_empty_string(self):
+        # Test case: Empty string for Rectangle
+        json_string = ""
+        result = Rectangle.from_json_string(json_string)
+        self.assertEqual(result, [])
+
+    def test_from_json_string_rectangle_none(self):
+        # Test case: None input for Rectangle
+        json_string = None
+        result = Rectangle.from_json_string(json_string)
+        self.assertEqual(result, [])
+
 
 if __name__ == '__main__':
     unittest.main()

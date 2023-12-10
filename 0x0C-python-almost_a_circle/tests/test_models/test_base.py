@@ -95,6 +95,25 @@ class TestBase(unittest.TestCase):
         result += ' true, null, {"key": ["value1", "value2"]}]'
         self.assertEqual(json_result_varied_types, result)
 
+    def test_from_json_string_normal_case(self):
+        # Test case: Normal case for Base
+        json_string = '[{"id": 1}, {"id": 2}]'
+        result = Base.from_json_string(json_string)
+        expected = [{'id': 1}, {'id': 2}]
+        self.assertEqual(result, expected)
+
+    def test_from_json_string_empty_string(self):
+        # Test case: Empty string for Base
+        json_string = ""
+        result = Base.from_json_string(json_string)
+        self.assertEqual(result, [])
+
+    def test_from_json_string_none(self):
+        # Test case: None input for Base
+        json_string = None
+        result = Base.from_json_string(json_string)
+        self.assertEqual(result, [])
+
 
 if __name__ == '__main__':
     unittest.main()

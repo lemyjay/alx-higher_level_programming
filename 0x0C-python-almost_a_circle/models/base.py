@@ -22,6 +22,8 @@ class Base:
         to_json_string(list_dictionaries): Returns the JSON string
         representation of list_dictionaries.
 
+        from_json_string(json_string): Converts a JSON string to a list of dictionaries.
+
     Class Methods:
         save_to_file(cls, list_objs): Save a list of instances to a JSON file.
     """
@@ -64,6 +66,21 @@ class Base:
             return "[]"
         else:
             return json.dumps(list_dictionaries)
+
+    @staticmethod
+    def from_json_string(json_string):
+        """
+        Convert a JSON string to a list of dictionaries.
+
+        Args:
+            json_string (str): JSON string to be converted.
+
+        Returns:
+            list: List of dictionaries represented by the JSON string.
+        """
+        if json_string is None or json_string == "":
+            return []
+        return json.loads(json_string)
 
     @classmethod
     def save_to_file(cls, list_objs):

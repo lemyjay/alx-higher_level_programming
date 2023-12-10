@@ -321,6 +321,25 @@ class TestSquare(unittest.TestCase):
         if os.path.exists("Square.json"):
             os.remove("Square.json")
 
+    def test_from_json_string_square_normal_case(self):
+        # Test case: Normal case for Square
+        json_string = '[{"id": 1, "size": 5, "x": 2, "y": 3}]'
+        result = Square.from_json_string(json_string)
+        expected = [{'id': 1, 'size': 5, 'x': 2, 'y': 3}]
+        self.assertEqual(result, expected)
+
+    def test_from_json_string_square_empty_string(self):
+        # Test case: Empty string for Square
+        json_string = ""
+        result = Square.from_json_string(json_string)
+        self.assertEqual(result, [])
+
+    def test_from_json_string_square_none(self):
+        # Test case: None input for Square
+        json_string = None
+        result = Square.from_json_string(json_string)
+        self.assertEqual(result, [])
+
 
 if __name__ == '__main__':
     unittest.main()
