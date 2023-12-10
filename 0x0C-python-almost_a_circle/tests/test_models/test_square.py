@@ -138,7 +138,7 @@ class TestSquare(unittest.TestCase):
         s = Square(4, 6, 2, 1)
         with patch("sys.stdout", new_callable=StringIO) as mock_stdout:
             s.display()
-            expected_output = "\n\n\n\n      ####\n      ####\n"
+            expected_output = "\n\n      ####\n      ####\n"
             expected_output += "      ####\n      ####\n"
             self.assertEqual(mock_stdout.getvalue(), expected_output)
 
