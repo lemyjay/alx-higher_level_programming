@@ -21,6 +21,9 @@ class Base:
     Static Methods:
         to_json_string(list_dictionaries): Returns the JSON string
         representation of list_dictionaries.
+
+    Class Methods:
+        save_to_file(cls, list_objs): Save a list of instances to a JSON file.
     """
     __nb_objects = 0
 
@@ -61,3 +64,20 @@ class Base:
             return "[]"
         else:
             return json.dumps(list_dictionaries)
+
+    @classmethod
+    def save_to_file(cls, list_objs):
+        """
+        Save a list of instances to a JSON file.
+
+        Args:
+            list_objs (list): List of instances to be saved.
+
+        """
+        filename = "{}.json".format(cls.__name__)
+        with open(filename, "w") as file:
+            if list_objs is None:
+                file.write("[]")
+            else:
+                list_dicts = [obj.to_dictionary() for obj in list_objs]
+                file.write(cls.to_json_string(list_dicts))
