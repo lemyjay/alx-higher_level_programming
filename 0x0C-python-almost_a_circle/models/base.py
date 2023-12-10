@@ -27,6 +27,9 @@ class Base:
 
     Class Methods:
         save_to_file(cls, list_objs): Save a list of instances to a JSON file.
+
+         create(cls, **dictionary): Create an instance with attributes set
+                                    from a dictionary.
     """
     __nb_objects = 0
 
@@ -99,3 +102,26 @@ class Base:
             else:
                 list_dicts = [obj.to_dictionary() for obj in list_objs]
                 file.write(cls.to_json_string(list_dicts))
+
+    @classmethod
+    def create(cls, **dictionary):
+        """
+        Create an instance with attributes set from a dictionary.
+
+        Args:
+            **dictionary (dict): Dictionary containing attributes for the instance.
+
+        Returns:
+            Base: Instance of the class with attributes set from the dictionary.
+        """
+        from models.rectangle import Rectangle
+        from models.square import Square
+
+
+        if cls.__name__ == "Rectangle":
+            dummy_instance = Rectangle(1, 1)  # Dummy instance with mandatory attributes
+        elif cls.__name__ == "Square":
+            dummy_instance = Square(1)  # Dummy instance with mandatory attributes
+
+        dummy_instance.update(**dictionary)  # Apply real values using update method
+        return dummy_instance
