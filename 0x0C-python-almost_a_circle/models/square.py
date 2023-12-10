@@ -23,6 +23,8 @@ class Square(Rectangle):
 
         update(self, *args, **kwargs): Update the Square attributes based
                                         on the provided arguments.
+
+        to_dictionary(self): Returns the dictionary representation of a Square.
     """
     def __init__(self, size, x=0, y=0, id=None):
         """
@@ -104,3 +106,18 @@ class Square(Rectangle):
             for key, value in kwargs.items():
                 if key in attributes:
                     setattr(self, key, value)
+
+    def to_dictionary(self):
+        """
+        Returns the dictionary representation of a Square.
+
+        Returns:
+            dict: Dictionary containing id, size, x, and y.
+        """
+        square_dict = {
+            'id': self.id,
+            'size': self.size,
+            'x': self.x,
+            'y': self.y
+        }
+        return square_dict
