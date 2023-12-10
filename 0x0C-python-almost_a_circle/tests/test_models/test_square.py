@@ -113,7 +113,6 @@ class TestSquare(unittest.TestCase):
             s = Square(5.5, 2, 1, 1)
         self.assertEqual(str(context.exception), "width must be an integer")
 
-
     def test_valid_area(self):
         """
         Test case for calculating the area with valid values.
