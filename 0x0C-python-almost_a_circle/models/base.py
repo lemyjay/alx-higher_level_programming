@@ -126,6 +126,6 @@ class Base:
         if dictionary:  # Check if the dictionary is not empty
             dummy_instance.update(**dictionary)  # Apply real values using update method
         else:
-            return
+            return None
 
         return dummy_instance
