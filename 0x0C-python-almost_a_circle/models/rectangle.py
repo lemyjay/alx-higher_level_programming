@@ -26,15 +26,16 @@ class Rectangle(Base):
         area(self): Returns the area value of the Rectangle instance.
 
         display(self): Prints in stdout the Rectangle instance with the
-        character '#', taking care of x and y.
+                        character '#', taking care of x and y.
 
         __str__(self): Overrides the __str__ method to return a string
-        representation of the Rectangle.
+                        representation of the Rectangle.
 
         update(self, *args, **kwargs): Update the Rectangle attributes based
-        on the provided arguments.
+                                        on the provided arguments.
 
-     to_dictionary(self): Returns a dictionary representation of a Rectangle.   
+        to_dictionary(self): Returns a dictionary representation of
+                             a Rectangle.
     """
     def __init__(self, width, height, x=0, y=0, id=None):
         """

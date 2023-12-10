@@ -333,7 +333,11 @@ class TestRectangle(unittest.TestCase):
         Test case for to_dictionary with large values.
         """
         r = Rectangle(10**6, 10**6, 10**6, 10**6, 999)
-        expected_dict = {'id': 999, 'width': 10**6, 'height': 10**6, 'x': 10**6, 'y': 10**6}
+        expected_dict = {
+                'id': 999, 'width': 10**6,
+                'height': 10**6, 'x': 10**6,
+                'y': 10**6
+                }
         self.assertEqual(r.to_dictionary(), expected_dict)
 
 
