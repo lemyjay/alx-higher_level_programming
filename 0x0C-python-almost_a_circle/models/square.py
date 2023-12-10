@@ -70,3 +70,30 @@ class Square(Rectangle):
         """
         self.width = value
         self.height = value
+
+    def update(self, *args, **kwargs):
+        """Update the square's attributes with specified values.
+
+        Args:
+            *args: List of arguments.
+                - If provided, the first argument should be the id attribute.
+                - If provided, the second argument should be the size attribute.
+                - If provided, the third argument should be the x attribute.
+                - If provided, the fourth argument should be the y attribute.
+
+        Keyword Args:
+            **kwargs: Double pointer to a dictionary representing key/value pairs.
+                - Each key in the dictionary represents an attribute to the instance.
+                - **kwargs must be skipped if *args exists and is not empty.
+        """
+        attributes = ["id", "size", "x", "y"]
+
+        if args:
+            for i, value in enumerate(args):
+                if i < len(attributes):
+                    setattr(self, attributes[i], value)
+        else:
+            for key, value in kwargs.items():
+                if key in attributes:
+                    setattr(self, key, value)
+
