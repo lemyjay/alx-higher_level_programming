@@ -13,16 +13,17 @@ class Base:
 
     Attributes:
         __nb_objects (int): A private class attribute to keep track of the
-        number of objects created.
+                            number of objects created.
 
     Methods:
         __init__(self, id=None): The class constructor.
 
     Static Methods:
         to_json_string(list_dictionaries): Returns the JSON string
-        representation of list_dictionaries.
+                                           representation of list_dictionaries.
 
-        from_json_string(json_string): Converts a JSON string to a list of dictionaries.
+        from_json_string(json_string): Converts a JSON string to a
+                                        list of dictionaries.
 
     Class Methods:
         save_to_file(cls, list_objs): Save a list of instances to a JSON file.
