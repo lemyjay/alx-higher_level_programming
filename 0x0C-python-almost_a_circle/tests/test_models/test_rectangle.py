@@ -4,6 +4,7 @@ Unittest for the rectangle module (Rectangle class)
 """
 # File: tests/test_models/test_rectangle.py
 import unittest
+from models.base import Base
 from models.rectangle import Rectangle
 from io import StringIO
 from unittest.mock import patch
@@ -339,6 +340,22 @@ class TestRectangle(unittest.TestCase):
                 'y': 10**6
                 }
         self.assertEqual(r.to_dictionary(), expected_dict)
+
+    def test_to_json_string(self):
+        # Test case: Non-empty list of dictionaries
+        r1 = Rectangle(10, 7, 2, 8)
+        dictionary = r1.to_dictionary()
+        json_result = Base.to_json_string([dictionary])
+        self.assertEqual(json_result, '[{"x": 2, "width": 10, "id": 1, "height": 7, "y": 8}]')
+
+    def test_to_json_string_edge_cases(self):
+        # Test case: List with multiple dictionaries
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(5, 5, 1, 1)
+        dictionary1 = r1.to_dictionary()
+        dictionary2 = r2.to_dictionary()
+        json_result_multiple = Base.to_json_string([dictionary1, dictionary2])
+        self.assertEqual(json_result_multiple, '[{"x": 2, "width": 10, "id": 1, "height": 7, "y": 8}, {"x": 1, "width": 5, "id": 2, "height": 5, "y": 1}]')
 
 
 if __name__ == '__main__':

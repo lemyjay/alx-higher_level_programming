@@ -3,6 +3,7 @@
 Unittest for the square module (Square class)
 """
 import unittest
+from models.base import Base
 from models.square import Square
 from io import StringIO
 from unittest.mock import patch
@@ -257,6 +258,22 @@ class TestSquare(unittest.TestCase):
         s = Square(10**6, 10**5, 10**4, 10**3)
         expected_dict = {'id': s.id, 'size': 10**6, 'x': 10**5, 'y': 10**4}
         self.assertEqual(s.to_dictionary(), expected_dict)
+
+    def test_to_json_string_normal_case(self):
+        # Test case: Normal case with a single square
+        s = Square(4, 2, 3, 7)
+        dictionary = s.to_dictionary()
+        json_result_normal = Base.to_json_string([dictionary])
+        self.assertEqual(json_result_normal, '[{"id": 7, "size": 4, "x": 2, "y": 3}]')
+
+    def test_to_json_string_edge_cases(self):
+        # Test case: List with multiple dictionaries
+        s1 = Square(5, 2, 1, 9)
+        s2 = Square(3, 0, 0, 5)
+        dictionary1 = s1.to_dictionary()
+        dictionary2 = s2.to_dictionary()
+        json_result_multiple = Base.to_json_string([dictionary1, dictionary2])
+        self.assertEqual(json_result_multiple, '[{"id": 9, "size": 5, "x": 2, "y": 1}, {"id": 5, "size": 3, "x": 0, "y": 0}]')
 
 
 if __name__ == '__main__':

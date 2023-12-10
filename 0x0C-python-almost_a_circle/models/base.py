@@ -2,6 +2,7 @@
 """
 Base class
 """
+import json
 
 
 class Base:
@@ -16,15 +17,23 @@ class Base:
 
     Methods:
         __init__(self, id=None): The class constructor.
+
+    Static Methods:
+        to_json_string(list_dictionaries): Returns the JSON string
+        representation of list_dictionaries.
     """
     __nb_objects = 0
 
     def __init__(self, id=None):
         """
-        The class constructor.
+        The class constructor. Initializes a new instance of the Base class.
 
-        If 'id' is not None, assign it to the public instance attribute 'id'.
-        Otherwise, increment __nb_objects and assign the new value to 'id'.
+        Args:
+            id (int): Identifier for the instance.
+
+        Note:
+            If 'id' is not None, assign it to the public instance attribute 'id'.
+            Otherwise, increment __nb_objects and assign the new value to 'id'.
         """
 
         if id is not None:
@@ -36,3 +45,19 @@ class Base:
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
+
+    @staticmethod
+    def to_json_string(list_dictionaries):
+        """
+        Returns the JSON string representation of list_dictionaries.
+
+        Args:
+            list_dictionaries (list): A list of dictionaries.
+
+        Returns:
+            str: JSON string representation of list_dictionaries.
+        """
+        if list_dictionaries is None or not list_dictionaries:
+            return "[]"
+        else:
+            return json.dumps(list_dictionaries)

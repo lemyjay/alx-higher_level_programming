@@ -75,6 +75,21 @@ class TestBase(unittest.TestCase):
             Base(True)
         self.assertEqual(str(context.exception), "id must be an integer")
 
+    def test_to_json_string(self):
+        # Test case 1: Empty list of dictionaries
+        json_result_empty = Base.to_json_string([])
+        self.assertEqual(json_result_empty, '[]')
+
+        # Test case 2: None as input
+        json_result_none = Base.to_json_string(None)
+        self.assertEqual(json_result_none, '[]')
+
+    def test_to_json_string_edge_cases(self):
+        # Test case: Ensure valid JSON syntax with various data types
+        data = [{"name": "John", "age": 30, "city": "New York"}, 42, True, None, {"key": ["value1", "value2"]}]
+        json_result_varied_types = Base.to_json_string(data)
+        self.assertEqual(json_result_varied_types, '[{"name": "John", "age": 30, "city": "New York"}, 42, true, null, {"key": ["value1", "value2"]}]')
+
 
 if __name__ == '__main__':
     unittest.main()
