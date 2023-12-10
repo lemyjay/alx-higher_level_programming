@@ -346,7 +346,10 @@ class TestRectangle(unittest.TestCase):
         r1 = Rectangle(10, 7, 2, 8)
         dictionary = r1.to_dictionary()
         json_result = Base.to_json_string([dictionary])
-        result = '[{{"x": 2, "width": 10, "id": {}, "height": 7, "y": 8}}]'.format(str(r1.id))
+        result = (
+                '[{{"x": 2, "width": 10, "id": {}, "height": 7, "y": 8}}]'
+                .format(str(r1.id))
+                )
         self.assertEqual(sorted(json_result), sorted(result))
 
     def test_to_json_string_edge_cases(self):
@@ -356,7 +359,11 @@ class TestRectangle(unittest.TestCase):
         dictionary1 = r1.to_dictionary()
         dictionary2 = r2.to_dictionary()
         json_result_multiple = Base.to_json_string([dictionary1, dictionary2])
-        result = '[{{"x": 2, "width": 10, "id": {}, "height": 7, "y": 8}}, {{"x": 1, "width": 5, "id": {}, "height": 5, "y": 1}}]'.format(str(r1.id), str(r2.id))
+        result = (
+                '[{{"x": 2, "width": 10, "id": {}, "height": 7, "y": 8}}, '
+                '{{"x": 1, "width": 5, "id": {}, "height": 5, "y": 1}}]'
+                .format(str(r1.id), str(r2.id))
+                )
         self.assertEqual(sorted(json_result_multiple), sorted(result))
 
 

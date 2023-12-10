@@ -32,7 +32,7 @@ class Base:
             id (int): Identifier for the instance.
 
         Note:
-            If 'id' is not None, assign it to the public instance attribute 'id'.
+            If 'id' is not None, assign to the public instance attribute 'id'.
             Otherwise, increment __nb_objects and assign the new value to 'id'.
         """
 

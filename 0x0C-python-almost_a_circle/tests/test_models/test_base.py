@@ -86,9 +86,14 @@ class TestBase(unittest.TestCase):
 
     def test_to_json_string_edge_cases(self):
         # Test case: Ensure valid JSON syntax with various data types
-        data = [{"name": "John", "age": 30, "city": "New York"}, 42, True, None, {"key": ["value1", "value2"]}]
+        data = [
+                {"name": "John", "age": 30, "city": "New York"},
+                42, True, None, {"key": ["value1", "value2"]}
+                ]
         json_result_varied_types = Base.to_json_string(data)
-        self.assertEqual(json_result_varied_types, '[{"name": "John", "age": 30, "city": "New York"}, 42, true, null, {"key": ["value1", "value2"]}]')
+        result = '[{"name": "John", "age": 30, "city": "New York"}, 42,'
+        result += ' true, null, {"key": ["value1", "value2"]}]'
+        self.assertEqual(json_result_varied_types, result)
 
 
 if __name__ == '__main__':
