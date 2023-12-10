@@ -292,7 +292,11 @@ class TestSquare(unittest.TestCase):
 
         with open("Square.json", "r") as file:
             content = file.read()
-            self.assertEqual(content, '[{"id": 9, "size": 5, "x": 2, "y": 1}, {"id": 5, "size": 3, "x": 0, "y": 0}]')
+            result = (
+                    '[{"id": 9, "size": 5, "x": 2, "y": 1}, '
+                    '{"id": 5, "size": 3, "x": 0, "y": 0}]'
+                    )
+            self.assertEqual(content, result)
 
     def test_save_to_file_empty_list(self):
         """
