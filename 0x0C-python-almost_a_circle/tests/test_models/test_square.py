@@ -274,7 +274,7 @@ class TestSquare(unittest.TestCase):
         dictionary1 = s1.to_dictionary()
         dictionary2 = s2.to_dictionary()
         json_result_multiple = Base.to_json_string([dictionary1, dictionary2])
-        result = '[{{"id": {}, "size": 5, "x": 2, "y": 1}, {"id": {}, "size": 3, "x": 0, "y": 0}}]'.format(str(s1.id), str(s2.id))
+        result = '[{{"id": {}, "size": 5, "x": 2, "y": 1}}, {{"id": {}, "size": 3, "x": 0, "y": 0}}]'.format(str(s1.id), str(s2.id))
         self.assertEqual(json_result_multiple, result)
 
 
