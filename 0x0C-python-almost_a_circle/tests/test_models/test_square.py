@@ -197,7 +197,7 @@ class TestSquare(unittest.TestCase):
         """
         Test case for updating attributes using both *args and **kwargs.
         """
-        s = Square(10, 20, 30, 40, 50)
+        s = Square(10, 20, 30, 40)
         s.update(1, 2, 3, 4, 5, id=6, size=7, x=8, y=9)
         self.assertEqual(s.id, 1)   # *args takes precedence
         self.assertEqual(s.size, 2)  # *args takes precedence
@@ -208,7 +208,7 @@ class TestSquare(unittest.TestCase):
         """
         Test case for updating attributes with extra *args.
         """
-        s = Square(10, 20, 30, 40, 50)
+        s = Square(10, 20, 30, 40)
         s.update(1, 2, 3, 4, 5, 6)  # Extra argument
         self.assertEqual(s.id, 1)
         self.assertEqual(s.size, 2)
@@ -219,7 +219,7 @@ class TestSquare(unittest.TestCase):
         """
         Test case for updating attributes with extra **kwargs.
         """
-        s = Square(10, 20, 30, 40, 50)
+        s = Square(10, 20, 30, 40)
         # Extra keyword argument
         s.update(id=1, size=2, x=3, y=4, extra=5)
         self.assertEqual(s.id, 1)
