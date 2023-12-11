@@ -466,6 +466,32 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(obj_list[0].id, 99)
         self.assertEqual(obj_list[1].id, 42)
 
+    def test_save_and_load_from_file_csv_rectangle(self):
+        """
+        Test saving and loading Rectangle instances to and from a CSV file.
+        """
+        r1 = Rectangle(5, 10, 2, 7)
+        r2 = Rectangle(3, 6, 1, 4)
+        list_rectangles_input = [r1, r2]
+
+        Rectangle.save_to_file_csv(list_rectangles_input)
+        list_rectangles_output = Rectangle.load_from_file_csv()
+
+        for rect in list_rectangles_input:
+            self.assertIsInstance(rect, Rectangle)
+            self.assertIn(rect, list_rectangles_output)
+
+    def test_save_and_load_from_file_csv_rectangle_empty(self):
+        """
+        Test saving and loading an empty list of Rectangle instances to and from a CSV file.
+        """
+        list_rectangles_input = []
+    
+        Rectangle.save_to_file_csv(list_rectangles_input)
+        list_rectangles_output = Rectangle.load_from_file_csv()
+
+        self.assertEqual(list_rectangles_input, list_rectangles_output)
+
 
 if __name__ == '__main__':
     unittest.main()

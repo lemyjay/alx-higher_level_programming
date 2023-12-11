@@ -379,6 +379,32 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(obj_list[0].id, 10)
         self.assertEqual(obj_list[1].id, 23)
 
+    def test_save_and_load_from_file_csv_square(self):
+        """
+        Test saving and loading Square instances to and from a CSV file.
+        """
+        s1 = Square(5, 2, 3)
+        s2 = Square(4, 1, 1)
+        list_squares_input = [s1, s2]
+
+        Square.save_to_file_csv(list_squares_input)
+        list_squares_output = Square.load_from_file_csv()
+
+        for square in list_squares_input:
+            self.assertIsInstance(square, Square)
+            self.assertIn(square, list_squares_output)
+
+    def test_save_and_load_from_file_csv_square_empty(self):
+        """
+        Test saving and loading an empty list of Square instances to and from a CSV file.
+        """
+        list_squares_input = []
+    
+        Square.save_to_file_csv(list_squares_input)
+        list_squares_output = Square.load_from_file_csv()
+
+        self.assertEqual(list_squares_input, list_squares_output)
+
 
 if __name__ == '__main__':
     unittest.main()

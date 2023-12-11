@@ -3,6 +3,7 @@
 Base class
 """
 import json
+import csv
 
 
 class Base:
@@ -33,6 +34,10 @@ class Base:
 
         load_from_file(cls): Load instances from a JSON file and return a list
                              of instances.
+
+        save_to_file_csv(cls, list_objs): Save a list of instances to a CSV file.
+
+        load_from_file_csv(cls): Load a list of instances from a CSV file.
     """
     __nb_objects = 0
 
@@ -149,3 +154,50 @@ class Base:
                 return list_instances
         except FileNotFoundError:
             return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        Save a list of instances to a CSV file.
+
+        Args:
+            list_objs (list): List of instances to be saved.
+        """
+        filename = "{}.csv".format(cls.__name__)
+        with open(filename, "w", newline="") as file:
+            writer = csv.writer(file)
+            if list_objs is not None:
+                for obj in list_objs:
+                    if cls.__name__ == "Rectangle":
+                        row = [obj.id, obj.width, obj.height, obj.x, obj.y]
+                    elif cls.__name__ == "Square":
+                        row = [obj.id, obj.size, obj.x, obj.y]
+                    writer.writerow(row)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        Load a list of instances from a CSV file.
+
+        Returns:
+            list: List of instances loaded from the CSV file.
+        """
+        filename = "{}.csv".format(cls.__name__)
+        instances = []
+        try:
+            with open(filename, "r", newline="") as file:
+                reader = csv.reader(file)
+                for row in reader:
+                    if cls.__name__ == "Rectangle":
+                        instance = cls.create(
+                            id=int(row[0]), width=int(row[1]), height=int(row[2]),
+                            x=int(row[3]), y=int(row[4])
+                        )
+                    elif cls.__name__ == "Square":
+                        instance = cls.create(
+                            id=int(row[0]), size=int(row[1]), x=int(row[2]), y=int(row[3])
+                        )
+                    instances.append(instance)
+        except FileNotFoundError:
+            pass  # If the file doesn't exist, return an empty list
+        return instances
