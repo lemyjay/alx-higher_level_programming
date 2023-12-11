@@ -496,6 +496,13 @@ class TestRectangle(unittest.TestCase):
         """
         Test loading from a CSV file that does not exist and ensure that an empty list is returned.
         """
+        filename = "Rectangle.csv"
+
+        # Check if the file exists
+        if os.path.exists(filename):
+            # Remove the file if it exists
+            os.remove(filename)
+
         # Assuming the file "NonexistentFile.csv" does not exist
         list_rectangles_output = Rectangle.load_from_file_csv()
         self.assertEqual(list_rectangles_output, [])
