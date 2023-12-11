@@ -481,18 +481,23 @@ class TestRectangle(unittest.TestCase):
             self.assertIsInstance(rect, Rectangle)
             self.assertTrue(
                 any(
-                    all(getattr(rect_input, attr) == getattr(rect, attr) for attr in dir(rect_input) if not callable(getattr(rect_input, attr)) and not attr.startswith("__"))
+                    all(
+                        getattr(rect_input, attr) == getattr(rect, attr)
+                        for attr in dir(rect_input) if not
+                        callable(getattr(rect_input, attr)) and not
+                        attr.startswith("__")
+                        )
                     for rect_input in list_rectangles_input
                     )
                 )
 
-
     def test_save_and_load_from_file_csv_rectangle_empty(self):
         """
-        Test saving and loading an empty list of Rectangle instances to and from a CSV file.
+        Test saving and loading an empty list of Rectangle instances to
+        and from a CSV file.
         """
         list_rectangles_input = []
-    
+
         Rectangle.save_to_file_csv(list_rectangles_input)
         list_rectangles_output = Rectangle.load_from_file_csv()
 
@@ -500,7 +505,8 @@ class TestRectangle(unittest.TestCase):
 
     def test_load_from_file_csv_nonexistent_file(self):
         """
-        Test loading from a CSV file that does not exist and ensure that an empty list is returned.
+        Test loading from a CSV file that does not exist and ensure that
+        an empty list is returned.
         """
         filename = "Rectangle.csv"
 

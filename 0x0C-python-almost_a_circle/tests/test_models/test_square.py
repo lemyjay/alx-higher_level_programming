@@ -394,19 +394,23 @@ class TestSquare(unittest.TestCase):
             self.assertIsInstance(square, Square)
             self.assertTrue(
                 any(
-                    all(getattr(square_input, attr) == getattr(square, attr) for attr in dir(square_input) if not callable(getattr(square_input, attr)) and not attr.startswith("__"))
+                    all(
+                        getattr(square_input, attr) == getattr(square, attr)
+                        for attr in dir(square_input) if not
+                        callable(getattr(square_input, attr)) and not
+                        attr.startswith("__")
+                        )
                     for square_input in list_squares_input
                     )
                 )
 
-
-
     def test_save_and_load_from_file_csv_square_empty(self):
         """
-        Test saving and loading an empty list of Square instances to and from a CSV file.
+        Test saving and loading an empty list of Square instances to
+        and from a CSV file.
         """
         list_squares_input = []
-    
+
         Square.save_to_file_csv(list_squares_input)
         list_squares_output = Square.load_from_file_csv()
 
@@ -414,7 +418,8 @@ class TestSquare(unittest.TestCase):
 
     def test_load_from_file_csv_nonexistent_file(self):
         """
-        Test loading from a CSV file that does not exist and ensure that an empty list is returned.
+        Test loading from a CSV file that does not exist and ensure
+        that an empty list is returned.
         """
         filename = "Square.csv"
 

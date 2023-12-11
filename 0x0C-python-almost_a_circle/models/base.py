@@ -28,7 +28,8 @@ class Base:
                                         list of dictionaries.
 
         draw(list_rectangles, list_squares): Opens a window and draws
-                                            all the Rectangles and Squares using Turtle graphics.
+                                            all the Rectangles and Squares
+                                            using Turtle graphics.
 
     Class Methods:
         save_to_file(cls, list_objs): Save a list of instances to a JSON file.
@@ -39,7 +40,8 @@ class Base:
         load_from_file(cls): Load instances from a JSON file and return a list
                              of instances.
 
-        save_to_file_csv(cls, list_objs): Save a list of instances to a CSV file.
+        save_to_file_csv(cls, list_objs): Save a list of instances
+                                          to a CSV file.
 
         load_from_file_csv(cls): Load a list of instances from a CSV file.
     """
@@ -121,23 +123,26 @@ class Base:
         Create an instance with attributes set from a dictionary.
 
         Args:
-            **dictionary (dict): Dictionary containing attributes for the instance.
+            **dictionary (dict): Dictionary containing attributes for
+                                the instance.
 
         Returns:
-            Base: Instance of the class with attributes set from the dictionary.
+            Base: Instance of the class with attributes set from
+                  the dictionary.
         """
         from models.rectangle import Rectangle
         from models.square import Square
 
-
         dummy_instance = None
         if cls.__name__ == "Rectangle":
-            dummy_instance = Rectangle(1, 1)  # Dummy instance with mandatory attributes
+            # Dummy instance for Rectangle with mandatory attributes
+            dummy_instance = Rectangle(1, 1)
         elif cls.__name__ == "Square":
-            dummy_instance = Square(1)  # Dummy instance with mandatory attributes
+            # Dummy instance for Square with mandatory attributes
+            dummy_instance = Square(1)
 
-        if dictionary:  # Check if the dictionary is not empty
-            dummy_instance.update(**dictionary)  # Apply real values using update method
+        if dictionary:
+            dummy_instance.update(**dictionary)
 
         return dummy_instance
 
@@ -194,13 +199,14 @@ class Base:
                 for row in reader:
                     if cls.__name__ == "Rectangle":
                         instance = cls.create(
-                            id=int(row[0]), width=int(row[1]), height=int(row[2]),
-                            x=int(row[3]), y=int(row[4])
-                        )
+                            id=int(row[0]), width=int(row[1]),
+                            height=int(row[2]), x=int(row[3]), y=int(row[4])
+                            )
                     elif cls.__name__ == "Square":
                         instance = cls.create(
-                            id=int(row[0]), size=int(row[1]), x=int(row[2]), y=int(row[3])
-                        )
+                            id=int(row[0]), size=int(row[1]),
+                            x=int(row[2]), y=int(row[3])
+                            )
                     instances.append(instance)
         except FileNotFoundError:
             pass  # If the file doesn't exist, return an empty list
@@ -209,7 +215,8 @@ class Base:
     @staticmethod
     def draw(list_rectangles, list_squares):
         """
-        Opens a window and draws all the Rectangles and Squares using Turtle graphics.
+        Opens a window and draws all the Rectangles and Squares using
+        Turtle graphics.
 
         Args:
             list_rectangles (list): List of Rectangle instances.
