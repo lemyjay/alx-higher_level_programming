@@ -4,6 +4,7 @@ Base class
 """
 import json
 import csv
+import turtle
 
 
 class Base:
@@ -25,6 +26,9 @@ class Base:
 
         from_json_string(json_string): Converts a JSON string to a
                                         list of dictionaries.
+
+        draw(list_rectangles, list_squares): Opens a window and draws
+                                            all the Rectangles and Squares using Turtle graphics.
 
     Class Methods:
         save_to_file(cls, list_objs): Save a list of instances to a JSON file.
@@ -201,3 +205,49 @@ class Base:
         except FileNotFoundError:
             pass  # If the file doesn't exist, return an empty list
         return instances
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """
+        Opens a window and draws all the Rectangles and Squares using Turtle graphics.
+
+        Args:
+            list_rectangles (list): List of Rectangle instances.
+            list_squares (list): List of Square instances.
+        """
+        screen = turtle.Screen()
+        screen.bgcolor("white")
+        screen.title("Draw Rectangles and Squares")
+
+        pen = turtle.Turtle()
+        pen.speed(2)
+
+        for rect in list_rectangles:
+            pen.penup()
+            pen.goto(rect.x, rect.y)
+            pen.pendown()
+            pen.color("blue")
+            pen.forward(rect.width)
+            pen.left(90)
+            pen.forward(rect.height)
+            pen.left(90)
+            pen.forward(rect.width)
+            pen.left(90)
+            pen.forward(rect.height)
+            pen.left(90)
+
+        for square in list_squares:
+            pen.penup()
+            pen.goto(square.x, square.y)
+            pen.pendown()
+            pen.color("red")
+            pen.forward(square.size)
+            pen.left(90)
+            pen.forward(square.size)
+            pen.left(90)
+            pen.forward(square.size)
+            pen.left(90)
+            pen.forward(square.size)
+            pen.left(90)
+
+        turtle.done()
