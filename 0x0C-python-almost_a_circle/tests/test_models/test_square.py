@@ -392,7 +392,14 @@ class TestSquare(unittest.TestCase):
 
         for square in list_squares_output:
             self.assertIsInstance(square, Square)
-            self.assertIn(square, list_squares_input)
+            self.assertTrue(
+                any(
+                    all(getattr(square_input, attr) == getattr(square, attr) for attr in dir(square_input) if not callable(getattr(square_input, attr)) and not attr.startswith("__"))
+                    for square_input in list_squares_input
+                    )
+                )
+
+
 
     def test_save_and_load_from_file_csv_square_empty(self):
         """

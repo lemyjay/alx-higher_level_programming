@@ -479,7 +479,13 @@ class TestRectangle(unittest.TestCase):
 
         for rect in list_rectangles_output:
             self.assertIsInstance(rect, Rectangle)
-            self.assertIn(rect, list_rectangles_input)
+            self.assertTrue(
+                any(
+                    all(getattr(rect_input, attr) == getattr(rect, attr) for attr in dir(rect_input) if not callable(getattr(rect_input, attr)) and not attr.startswith("__"))
+                    for rect_input in list_rectangles_input
+                    )
+                )
+
 
     def test_save_and_load_from_file_csv_rectangle_empty(self):
         """
