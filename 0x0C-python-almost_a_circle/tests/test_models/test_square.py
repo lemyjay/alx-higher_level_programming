@@ -390,9 +390,9 @@ class TestSquare(unittest.TestCase):
         Square.save_to_file_csv(list_squares_input)
         list_squares_output = Square.load_from_file_csv()
 
-        for square in list_squares_input:
+        for square in list_squares_output:
             self.assertIsInstance(square, Square)
-            self.assertIn(square, list_squares_output)
+            self.assertIn(square, list_squares_input)
 
     def test_save_and_load_from_file_csv_square_empty(self):
         """

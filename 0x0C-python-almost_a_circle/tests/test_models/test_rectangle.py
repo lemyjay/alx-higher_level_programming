@@ -477,9 +477,9 @@ class TestRectangle(unittest.TestCase):
         Rectangle.save_to_file_csv(list_rectangles_input)
         list_rectangles_output = Rectangle.load_from_file_csv()
 
-        for rect in list_rectangles_input:
+        for rect in list_rectangles_output:
             self.assertIsInstance(rect, Rectangle)
-            self.assertIn(rect, list_rectangles_output)
+            self.assertIn(rect, list_rectangles_input)
 
     def test_save_and_load_from_file_csv_rectangle_empty(self):
         """
