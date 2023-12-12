@@ -51,6 +51,30 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s.y, 0)
         self.assertEqual(s.id, 1)
 
+    def test_square_invalid_y_negative(self):
+        """
+        Test that creating a Square with negative y coordinate raises a ValueError.
+        """
+        with self.assertRaises(ValueError) as context:
+            s = Square(1, 2, -3)
+        self.assertEqual(str(context.exception), "y must be >= 0")
+
+    def test_square_invalid_size_string(self):
+        """
+        Test that creating a Square with a string as size raises a TypeError.
+        """
+        with self.assertRaises(TypeError) as context:
+            s = Square(1, 2, "3")
+        self.assertEqual(str(context.exception), "y must be an integer")
+
+    def test_square_invalid_x_string(self):
+        """
+        Test that creating a Square with a string as x coordinate raises a TypeError.
+        """
+        with self.assertRaises(TypeError) as context:
+            s = Square(1, "2")
+        self.assertEqual(str(context.exception), "y must be an integer")
+
     def test_valid_x_and_y(self):
         """
         Test case for valid x and y.
@@ -60,8 +84,6 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s.x, 2)
         self.assertEqual(s.y, 3)
         self.assertEqual(s.id, 1)
-
-    # Add more test cases similar to the TestRectangle class
 
     def test_default_values(self):
         """
