@@ -73,7 +73,7 @@ class TestSquare(unittest.TestCase):
         """
         with self.assertRaises(TypeError) as context:
             s = Square(1, "2")
-        self.assertEqual(str(context.exception), "y must be an integer")
+        self.assertEqual(str(context.exception), "x must be an integer")
 
     def test_valid_x_and_y(self):
         """
