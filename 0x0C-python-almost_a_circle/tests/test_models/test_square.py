@@ -53,7 +53,8 @@ class TestSquare(unittest.TestCase):
 
     def test_square_invalid_y_negative(self):
         """
-        Test that creating a Square with negative y coordinate raises a ValueError.
+        Test that creating a Square with negative y coordinate raises
+        a ValueError.
         """
         with self.assertRaises(ValueError) as context:
             s = Square(1, 2, -3)
@@ -69,7 +70,8 @@ class TestSquare(unittest.TestCase):
 
     def test_square_invalid_x_string(self):
         """
-        Test that creating a Square with a string as x coordinate raises a TypeError.
+        Test that creating a Square with a string as x coordinate raises
+        a TypeError.
         """
         with self.assertRaises(TypeError) as context:
             s = Square(1, "2")
