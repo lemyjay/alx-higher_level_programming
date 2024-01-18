@@ -1,4 +1,4 @@
--- This script creates the database hbtn_0d_usa and the table cities (in the database hbtn_0d_usa) on the MySQL server.
+-- This script lists all the cities of California that can be found in the database hbtn_0d_usa.
 SELECT id, name
 FROM cities
 WHERE state_id = (
