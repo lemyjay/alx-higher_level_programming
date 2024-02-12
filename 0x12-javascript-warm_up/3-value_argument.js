@@ -1,5 +1,5 @@
-#!/usr/bin/node
-// A script that prints a message depending on the number of arguments passed.
+//#!/usr/bin/node
+// A script that prints the first argument passed to it.
 const argument = process.argv[2];
 
 if (argument) {
