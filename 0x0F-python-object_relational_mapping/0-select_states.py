@@ -19,7 +19,7 @@ if __name__ == '__main__':
             port=3306,
             user=username,
             passwd=password,
-            db='hbtn_0e_0_usa',
+            db=database,
             charset='utf8'
         )
         cursor = db.cursor()
