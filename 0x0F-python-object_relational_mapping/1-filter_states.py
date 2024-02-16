@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 '''
-A script that lists all states from the database hhbtn_0e_0_usa
+A script that lists all states with a name starting with N (upper N)
+from the database hhbtn_0e_0_usa
 '''
 
 
@@ -29,7 +30,7 @@ if __name__ == '__main__':
 
     # Execute SQL query to select all states
     try:
-        cursor.execute('SELECT * FROM states ORDER BY id ASC')
+        cursor.execute('SELECT * FROM states WHERE name LIKE "N%";')
         states = cursor.fetchall()
     except MySQLdb.Error as e:
         print("MySQL Error {}: {}".format(e.args[0], e.args[1]))
