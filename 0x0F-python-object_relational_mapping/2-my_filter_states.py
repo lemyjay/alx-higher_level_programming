@@ -15,28 +15,20 @@ if __name__ == '__main__':
     state_name = sys.argv[4]
 
     # Connect to MySQL database
-    try:
-        db = MySQLdb.connect(
-            host='localhost',
-            port=3306,
-            user=username,
-            passwd=password,
-            db=database,
-            charset='utf8'
-        )
-        cursor = db.cursor()
-    except MySQLdb.Error as e:
-        print('MySQL Error {}: {}'.format(e.args[0], e.args[1]))
-        sys.exit(1)
+    db = MySQLdb.connect(
+        host='localhost',
+        port=3306,
+        user=username,
+        passwd=password,
+        db=database,
+        charset='utf8'
+    )
+    cursor = db.cursor()
 
     # Execute SQL query to select all states
-    try:
-        query = 'SELECT * FROM states WHERE name = %s ORDER BY id ASC'
-        cursor.execute(query, (state_name,))
-        states = cursor.fetchall()
-    except MySQLdb.Error as e:
-        print("MySQL Error {}: {}".format(e.args[0], e.args[1]))
-        sys.exit(1)
+    query = 'SELECT * FROM states WHERE name = %s ORDER BY id ASC'
+    cursor.execute(query, (state_name,))
+    states = cursor.fetchall()
 
     # Display results
     for state_id, state_name in states:

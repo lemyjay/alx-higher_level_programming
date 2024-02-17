@@ -13,31 +13,20 @@ if __name__ == '__main__':
     password = sys.argv[2]
     database = sys.argv[3]
 
-    # Connect to MySQL database
-    try:
-        db = MySQLdb.connect(
-            host='localhost',
-            port=3306,
-            user=username,
-            passwd=password,
-            db=database,
-            charset='utf8'
-        )
-        cursor = db.cursor()
-    except MySQLdb.Error as e:
-        print('MySQL Error {}: {}'.format(e.args[0], e.args[1]))
-        sys.exit(1)
-
-    # Execute SQL query to select all states
-    try:
-        cursor.execute(
-            'SELECT * FROM states WHERE name LIKE %s ORDER BY id ASC;',
-            ('N%',))
-        states = cursor.fetchall()
-    except MySQLdb.Error as e:
-        print("MySQL Error {}: {}".format(e.args[0], e.args[1]))
-        sys.exit(1)
-
+    db = MySQLdb.connect(
+        host='localhost',
+        port=3306,
+        user=username,
+        passwd=password,
+        db=database,
+        charset='utf8'
+    )
+    cursor = db.cursor()
+    cursor.execute(
+        'SELECT * FROM states WHERE name LIKE %s ORDER BY id ASC;',
+        ('N%',))
+    states = cursor.fetchall()
+    
     # Display results
     for state_id, state_name in states:
         print("({}, '{}')". format(state_id, state_name))
