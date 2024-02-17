@@ -28,9 +28,10 @@ if __name__ == '__main__':
     states = cursor.fetchall()
 
     # Display results
-    for row in states:
-        if row[1][0] == 'N':
-            print(row)
+    # Display results
+    for state_id, state_name in states:
+        if state_name[0] == 'N':
+            print("({}, '{}')". format(state_id, state_name))
 
     # Close cursor and database connection
     cursor.close()
