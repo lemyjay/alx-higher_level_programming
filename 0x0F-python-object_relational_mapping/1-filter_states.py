@@ -30,7 +30,7 @@ if __name__ == '__main__':
 
     # Execute SQL query to select all states
     try:
-        cursor.execute('SELECT * FROM states WHERE name LIKE %s;', ('N%',))
+        cursor.execute('SELECT * FROM states WHERE name LIKE %s ORDER BY id ASC;', ('N%',))
         states = cursor.fetchall()
     except MySQLdb.Error as e:
         print("MySQL Error {}: {}".format(e.args[0], e.args[1]))
