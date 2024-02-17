@@ -28,7 +28,6 @@ if __name__ == '__main__':
     states = cursor.fetchall()
 
     # Display results
-    # Display results
     for state_id, state_name in states:
         if state_name[0] == 'N':
             print("({}, '{}')".format(state_id, state_name))

@@ -23,7 +23,7 @@ if __name__ == '__main__':
     )
     cursor = db.cursor()
 
-    # Execute SQL query to select all states
+    # Execute SQL query
     query = '\
         SELECT cities.id, cities.name, states.name\
         FROM cities, states\
