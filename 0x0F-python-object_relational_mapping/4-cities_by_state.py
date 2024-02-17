@@ -29,8 +29,8 @@ if __name__ == '__main__':
     cities = cursor.fetchall()
 
     # Display results
-    for city_id, city_name in cities:
-        print("({}, '{}')". format(city_id, city_name))
+    for row in cities:
+        print(row)
 
     # Close cursor and database connection
     cursor.close()
