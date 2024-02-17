@@ -31,7 +31,7 @@ if __name__ == '__main__':
     # Display results
     for state_id, state_name in states:
         if state_name[0] == 'N':
-            print("({}, '{}')". format(state_id, state_name))
+            print("({}, '{}')".format(state_id, state_name))
 
     # Close cursor and database connection
     cursor.close()
