@@ -39,8 +39,8 @@ if __name__ == '__main__':
         sys.exit(1)
 
     # Display results
-    for id, state in states:
-        print("({}, '{}')". format(id, state))
+    for state_id, state_name in states:
+        print("({}, '{}')". format(state_id, state_name))
 
     # Close cursor and database connection
     cursor.close()
