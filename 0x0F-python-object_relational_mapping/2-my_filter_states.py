@@ -31,11 +31,8 @@ if __name__ == '__main__':
 
     # Execute SQL query to select all states
     try:
-        query = '\
-        SELECT * FROM states\
-        WHERE name = "{}"\
-        ORDER BY id ASC'.format(state_name)
-        cursor.execute(query)
+        query = 'SELECT * FROM states WHERE name = %s ORDER BY id ASC'
+        cursor.execute(query, (state_name,))
         states = cursor.fetchall()
     except MySQLdb.Error as e:
         print("MySQL Error {}: {}".format(e.args[0], e.args[1]))
