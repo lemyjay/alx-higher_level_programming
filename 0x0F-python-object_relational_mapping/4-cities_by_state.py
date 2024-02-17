@@ -24,7 +24,11 @@ if __name__ == '__main__':
     cursor = db.cursor()
 
     # Execute SQL query to select all states
-    query = 'SELECT * FROM cities ORDER BY id ASC'
+    query = '\
+        SELECT cities.id, cities.name, states.name\
+        FROM cities, states\
+        WHERE states.id = cities.state_id\
+        ORDER BY id ASC'
     cursor.execute(query)
     cities = cursor.fetchall()
 
