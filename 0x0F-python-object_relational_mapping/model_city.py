@@ -15,9 +15,11 @@ class City(Base):
 
     Attributes:
         - id: An auto-generated unique integer identifier for the city.
-        - name: A string representing the name of the city, maximum length of 128 characters.
+        - name: A string representing the name of the city, maximum
+                length of 128 characters.
         - state_id: An integer representing the foreign key to states.id.
-        - state: A relationship attribute, representing the State object linked to this city.
+        - state: A relationship attribute, representing the State object
+                linked to this city.
     """
     __tablename__ = 'cities'
     id = Column(
