@@ -29,7 +29,7 @@ if __name__ == '__main__':
     query = '\
         SELECT name\
         FROM cities\
-        WHERE states_id = (\
+        WHERE state_id = (\
             SELECT id\
             FROM states\
             WHERE name = %s\
