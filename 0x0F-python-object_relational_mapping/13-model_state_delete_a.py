@@ -31,5 +31,12 @@ if __name__ == '__main__':
     for state in states:
         session.delete(state)
 
+    '''
+    Or it could have been done like this:
+    session.query(State).filter(State.name.like('%a%')).delete()
+
+    Then afterwards apply the commit to it
+    '''
+
     session.commit()
     session.close()
