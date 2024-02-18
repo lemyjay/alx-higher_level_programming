@@ -39,7 +39,8 @@ if __name__ == '__main__':
     cities = cursor.fetchall()
 
     # Display results
-    print(cities)
+    for row in cities:
+        print(row[0])
 
     # Close cursor and database connection
     cursor.close()
