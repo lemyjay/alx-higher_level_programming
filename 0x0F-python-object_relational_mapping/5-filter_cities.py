@@ -39,8 +39,12 @@ if __name__ == '__main__':
     cities = cursor.fetchall()
 
     # Display results
+    comma = ', '
     for row in cities:
-        print(row[0])
+        if (row == cities[len(cities) - 1]):
+            comma = ''
+        print(row[0] + comma, end='')
+    print()
 
     # Close cursor and database connection
     cursor.close()
