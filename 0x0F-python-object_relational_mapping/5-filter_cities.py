@@ -27,9 +27,13 @@ if __name__ == '__main__':
 
     # Execute SQL query
     query = '\
-        SELECT cities.name\
-        FROM cities JOIN states ON states.id AND cities.state_id\
-        WHERE states.name = %s\
+        SELECT name\
+        FROM cities\
+        WHERE states_id = (\
+            SELECT id\
+            FROM states\
+            WHERE name = %s\
+        )\
         ORDER BY cities.id ASC'
     cursor.execute(query, (state_name,))
     cities = cursor.fetchall()
