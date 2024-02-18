@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 '''
-A script that changes the name of a State object from
-the database hbtn_0e_6_usa
+A script that deletes all State objects with a name containing the letter 'a'
+from the database hbtn_0e_6_usa
 '''
 
 
@@ -25,11 +25,11 @@ if __name__ == '__main__':
     # Create a session
     session = Session()
 
-    # Querying for the State instance
-    state = session.query(State).filter(State.id == 2).first()
+    # Querying for the State instance with 'a' in their name
+    states = session.query(State).filter(State.name.like('%a%')).all()
 
-    if state:
-        state.name = "New Mexico"
-        session.commit()
+    for state in states:
+        session.delete(state)
 
+    session.commit()
     session.close()
