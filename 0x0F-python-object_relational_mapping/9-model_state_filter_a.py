@@ -30,7 +30,7 @@ if __name__ == '__main__':
     # The query could have been this way too
     '''
     states = session.query(State).filter(
-        State.name.like('%a%')).order_by(State.id)
+        State.name.like('%a%')).order_by(State.id).all()
 
     Then the states will be queried for state id and name
     '''
