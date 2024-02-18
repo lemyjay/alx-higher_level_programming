@@ -18,5 +18,18 @@ if __name__ == '__main__':
             mysql+mysqldb://{}:{}@localhost/{}'.format(
                 username, password, database, pool_pre_ping=True)
             )
-    print(State.query.all())
+    
+    # Create a session factory
+    Session = sessionmaker(bind=engine)
 
+    # Create a session
+    session = Session()
+
+    # Query all State objects and print them
+    states = session. query(State).order_by(State.id).all()
+
+    for state in states:
+        print("{}: {}".format(state.id, state.name))
+    
+    session.close()
+    
