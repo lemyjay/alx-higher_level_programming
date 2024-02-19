@@ -5,7 +5,7 @@ Module that defines the relationship of the city class
 
 
 from sqlalchemy import Column, Integer, String, ForeignKey
-from relationship_state import Base, State
+from relationship_state import Base
 
 
 class City(Base):
