@@ -38,7 +38,7 @@ if __name__ == "__main__":
 
     # Adding the State and City objects to the session and committing changes
     session.add(new_state)
-    session.add(new_city)
+    #session.add(new_city)
     session.commit()
 
     # Closing the session
