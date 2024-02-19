@@ -38,7 +38,6 @@ if __name__ == '__main__':
 
     # Add the state to the session
     session.add(california)
-    session.add(san_francisco)
 
     # Commit the changes
     session.commit()
