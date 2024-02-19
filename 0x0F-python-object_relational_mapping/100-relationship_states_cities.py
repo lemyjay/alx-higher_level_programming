@@ -14,7 +14,7 @@ from relationship_city import City
 
 if __name__ == '__main__':
     # Check if the number of arguments is correct
-    if len(argv) != 4:
+    if len(sys.argv) != 4:
         print("Usage: {} <username> <password> <database>".format(argv[0]))
         exit()
 
