@@ -1,30 +1,28 @@
 #!/usr/bin/python3
-'''
-A script that creates the State “California” with the City “San Francisco”
-from the database hbtn_0e_100_usa
-'''
 
+"""
+Script that creates the State “California” with the City “San Francisco”
+from the database hbtn_0e_100_usa.
+Script must take 3 arguments: mysql username, mysql password and database name
+"""
 
-import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from relationship_state import State, Base
+from relationship_state import Base, State
 from relationship_city import City
+from sys import argv
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
+
     # Check if the number of arguments is correct
-    if len(sys.argv) != 4:
+    if len(argv) != 4:
         print("Usage: {} <username> <password> <database>".format(argv[0]))
         exit()
 
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
-
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
-                username, password, database, pool_pre_ping=True)
-            )
+    # Creating the connection string
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
+        argv[1], argv[2], argv[3]), pool_pre_ping=True)
 
     # Creating the tables in the database
     Base.metadata.create_all(engine)
