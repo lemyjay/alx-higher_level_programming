@@ -13,6 +13,11 @@ from relationship_city import City
 
 
 if __name__ == '__main__':
+    # Check if the number of arguments is correct
+    if len(argv) != 4:
+        print("Usage: {} <username> <password> <database>".format(argv[0]))
+        exit()
+
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
