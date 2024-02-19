@@ -5,7 +5,7 @@ Module that contains the class definition of a City.
 
 
 from sqlalchemy import Column, Integer, String, ForeignKey
-from model_state import Base
+from relationship_state import Base, State
 
 
 class City(Base):
