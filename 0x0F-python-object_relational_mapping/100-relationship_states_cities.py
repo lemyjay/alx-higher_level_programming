@@ -21,26 +21,22 @@ if __name__ == '__main__':
                 username, password, database, pool_pre_ping=True)
             )
 
-    # Create a session factory
-    Session = sessionmaker(bind=engine)
+    # Creating the tables in the database
+    Base.metadata.create_all(engine)
 
-    # Create a session
+    # Creating an instance of Session
+    Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Create a new State
-    california = State(name="California")
+    # Creating the State "California" with the City "San Francisco"
+    new_state = State(name="California")
+    new_city = City(name="San Francisco")
+    new_state.cities.append(new_city)
 
-    # Create a new City
-    san_francisco = City(name="San Francisco")
-
-    # Add the city to the state
-    california.cities.append(san_francisco)
-
-    # Add the state to the session
-    session.add(california)
-
-    # Commit the changes
+    # Adding the State and City objects to the session and committing changes
+    session.add(new_state)
+    session.add(new_city)
     session.commit()
 
-    # Close the session
+    # Closing the session
     session.close()
