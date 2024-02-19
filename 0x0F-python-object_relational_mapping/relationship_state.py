@@ -6,7 +6,7 @@ Module that defines the relationship of the state class
 
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
-from model_city import Base, City
+from model_state import Base
 
 
 class State(Base):
