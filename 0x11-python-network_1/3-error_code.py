@@ -18,6 +18,7 @@ if __name__ == "__main__":
     except urllib.error.HTTPError as e:
         # e is of the form 'HTTP Error 404: Not Found'
         # so using split to get the status code part
+        # I later on realized I could have just used e.code
         e = str(e)
         e = e.split(' ')
         print("Error code: {}".format(e[2][:3]))
