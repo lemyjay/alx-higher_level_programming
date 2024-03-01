@@ -1,16 +1,14 @@
 #!/usr/bin/python3
-'''A Python script that fetches https://alx-intranet.hbtn.io/status'''
-import urllib.request
+'''
+A Python script that fetches https://alx-intranet.hbtn.io/status
+This uses the Request'''
+import requests
 
 url = "https://alx-intranet.hbtn.io/status"
-req = urllib.request.Request(url)
+request = requests.get(url)
+content = request.text
+# Getting the type of content
+print(f'Body response:\n\t- type: {type(content)}')
 
-# Fetching the response
-with urllib.request.urlopen(req) as response:
-    data = response.read().decode("utf-8")
-
-    # Getting the type of data
-    print(f'Body response:\n\t- type: {type(data)}')
-
-    # Getting the content of data
-    print(f'\t- content: {data}')
+# Getting the content of data
+print(f'\t- content: {content}')
