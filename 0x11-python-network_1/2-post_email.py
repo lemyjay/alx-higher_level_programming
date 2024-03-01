@@ -1,19 +1,21 @@
 #!/usr/bin/python3
-'''A Python script that fetches https://alx-intranet.hbtn.io/status'''
+'''
+A Python script that takes in a URL and an email, sends a POST request to
+the passed URL with the email as a parameter, and displays the body of the response (decoded in utf-8).
+'''
 import urllib.request
+import sys
 
-url = "https://alx-intranet.hbtn.io/status"
-req = urllib.request.Request(url)
+if __name__ == "__main__":
+    url = sys.argv[1]
+    email = sys.argv[2]
+    value = {}
+    value['email'] = email
+    data = urllib.parse.urlencode(value)
+    data = data.encode('ascii')
+    req = urllib.request.Request(url, data)
 
-# Fetching the response
-with urllib.request.urlopen(req) as response:
-    data = response.read()
-
-    # Getting the type of the content (class 'bytes')
-    print(f'Body response:\n\t- type: {type(data)}')
-
-    # Getting the content (b'OK')
-    print(f'\t- content: {data}')
-
-    # Getting the utf8 content ('OK')
-    print(f'\t- utf8 content: {data.decode("utf-8")}')
+    # Fetching the response
+    with urllib.request.urlopen(req) as response:
+        content = response.read().decode('utf-8')
+        print(content)
