@@ -4,6 +4,8 @@ import urllib.request
 
 url = "https://alx-intranet.hbtn.io/status"
 req = urllib.request.Request(url)
+
+# Fetching the response
 with urllib.request.urlopen(req) as response:
     data = response.read()
 
