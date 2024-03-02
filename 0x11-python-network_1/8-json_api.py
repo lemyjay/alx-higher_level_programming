@@ -25,12 +25,15 @@ if __name__ == "__main__":
     values['q'] = q
 
     # Fetching the response
-    request = requests.post(url, values)
-    if request.json and len(request.json) != 0:
-        name = request.json['name']
-        id = request.json['id']
-        print('[{}] {}'.format(id, name))
-    elif not request.json:
-        print('Not a valid JSON')
-    elif len(request.json) == 0:
-        print('No result')
+    response = requests.post(url, values)
+    try:
+        json_data = response.json()
+
+        if json_data:
+            name = json_data.get('name')
+            id = json_data.get('id')
+            print('[{}] {}'.format(id, name))
+        else:
+            print("No result")
+    except ValueError:
+        print("Not a valid JSON")
