@@ -14,5 +14,5 @@ if __name__ == "__main__":
     value['email'] = email
     # data = urllib.parse.urlencode(value)
     # data = data.encode('ascii')
-    request = requests.get(url, value)
-    print(request.text)
+    request = requests.post(url, value)
+    print(request)
