@@ -15,4 +15,4 @@ if __name__ == "__main__":
     if stat_code >= 400:
         print('Error code: {}'.format(stat_code))
     else:
-        print(request)
+        print(request.text)
