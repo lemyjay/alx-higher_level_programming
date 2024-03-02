@@ -15,4 +15,4 @@ if __name__ == "__main__":
     # data = urllib.parse.urlencode(value)
     # data = data.encode('ascii')
     request = requests.post(url, value)
-    print(request)
+    print(request.text)
