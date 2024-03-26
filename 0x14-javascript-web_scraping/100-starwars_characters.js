@@ -8,13 +8,17 @@ request(_url, (err, response) => {
     console.error(err);
     return;
   }
+  // Getting a list of characters
   const final = (JSON.parse(response.body)).characters;
+
+  // Iterating the list, is a list of links and performing requests on each
   for (let i = 0; i < final.length; i++) {
     request(final[i], (errorInner, responseInner) => {
       if (errorInner) {
         console.error(errorInner);
         return;
       }
+      // Getting and print the name of character for each link in the list
       const name = (JSON.parse(responseInner.body)).name;
       console.log(name);
     });
