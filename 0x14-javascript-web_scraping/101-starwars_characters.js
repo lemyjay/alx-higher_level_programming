@@ -9,18 +9,25 @@ request(_url, (err, response) => {
     return;
   }
   // Getting a list of characters
-  const final = (JSON.parse(response.body)).characters;
-
-  // Iterating the list, is a list of links and performing requests on each
-  for (let i = 0; i < final.length; i++) {
-    request(final[i], (errorInner, responseInner) => {
-      if (errorInner) {
-        console.error(errorInner);
-        return;
-      }
-      // Getting and print the name of character for each link in the list
-      const name = (JSON.parse(responseInner.body)).name;
-      console.log(name);
-    });
-  }
+  const characters = (JSON.parse(response.body)).characters;
+  // Call the function to print characters, starting from index 0
+  printCharacters(characters, 0);
 });
+
+// Function to recursively print characters
+function printCharacters (characters, index) {
+  // Make a request to fetch information about the character at the given index
+  request(characters[index], function (error, response, body) {
+    // Check for errors in the request
+    if (!error) {
+      // Print the name of the character
+      console.log(JSON.parse(body).name);
+
+      // Check if there are more characters to print
+      if (index + 1 < characters.length) {
+        // Recursively call the function for the next character
+        printCharacters(characters, index + 1);
+      }
+    }
+  });
+}
