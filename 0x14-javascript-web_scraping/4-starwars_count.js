@@ -12,12 +12,11 @@ request(process.argv[2], (err, response) => {
     console.error(err);
     return;
   }
-  const final = (JSON.parse(response.body)).results;
-  let count = 0;
-  for (let i = 0; i < final.length; i++) {
-    if (final[i].characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`)) {
-      count++;
-    }
-  }
-  console.log(count);
+  const filmsData = JSON.parse(response.body).results;
+  const moviesWithWedge = filmsData.filter((film) =>
+    film.characters.includes(
+        `https://swapi-api.alx-tools.com/api/people/${characterId}/`
+    )
+  );
+  console.log(moviesWithWedge.length);
 });
