@@ -5,19 +5,19 @@ character “Wedge Antilles” is present.
 */
 
 const request = require('request');
-const apiUrl = process.argv[2];
 const characterId = 18;
 
-request(apiUrl, (err, response, body) => {
+request(process.argv[2], (err, response) => {
   if (err) {
     console.error(err);
-  } else {
-    const filmsData = JSON.parse(body).results;
-    const moviesWithWedge = filmsData.filter((film) =>
-      film.characters.includes(
-        `https://swapi-api.alx-tools.com/api/people/${characterId}/`
-      )
-    );
-    console.log(moviesWithWedge.length);
+    return;
   }
+  const final = (JSON.parse(response.body)).results;
+  let count = 0;
+  for (let i = 0; i < final.length; i++) {
+    if (final[i].characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`)) {
+      count++;
+    }
+  }
+  console.log(count);
 });
