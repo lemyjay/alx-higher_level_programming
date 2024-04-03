@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Holberton School</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  </head>
+  <body>
+    <div id="divText"></div>
+<div id="divHtml"></div>
+<input type="text" id="txtTest" name="txtTest" value="Input field" />
+
+<script type="text/javascript">
+$(function()
+{
+	$("#divText").text("A dynamically set text");
+	$("#divHtml").html("<b><i>A dynamically set HTML string</i></b>");
+	$("#txtTest").val("A dynamically set value");
+});
+</script>
+  </body>
+</html>
