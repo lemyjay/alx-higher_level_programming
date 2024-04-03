@@ -1,0 +1,3 @@
+# 0x15. JavaScript - Web jQuery
+
+About JavaScript jQuery and all, implement AJAX in some way...
